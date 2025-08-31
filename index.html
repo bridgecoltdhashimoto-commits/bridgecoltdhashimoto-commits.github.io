@@ -48,26 +48,41 @@ h1{margin:8px 0 10px;font-size:clamp(22px,4vw,28px)}
     </p>
 
     <!-- メール送信用：FormSubmit（Gmailへ転送） -->
-    <form action="https://formsubmit.co/bridge.co.ltd.hashimoto@gmail.com" method="POST" class="panel" style="text-align:left">
-      <!-- FormSubmit settings -->
-      <input type="hidden" name="_subject" value="【メンテ中窓口】BRIDGE お問い合わせ">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://bridgecoltdhashimoto-commits.github.io/#thanks">
-      <input type="text" name="_honey" style="display:none">
-      <div style="display:grid;gap:10px">
-        <label><strong>お名前（カタカナ）</strong><br>
-          <input name="お名前（カタカナ）" required placeholder="ヤマダ タロウ" pattern="^[\u30A0-\u30FF\sー\-]+$" style="width:100%;padding:.6rem;border:1px solid #e6dfcd;border-radius:8px">
-        </label>
-        <label><strong>連絡先（メール）</strong><br>
-          <input name="連絡先（メール）" type="email" required placeholder="example@gmail.com" style="width:100%;padding:.6rem;border:1px solid #e6dfcd;border-radius:8px">
-        </label>
-        <label><strong>ご用件</strong><br>
-          <textarea name="ご用件" required placeholder="お問い合わせ内容やご希望日時など" style="width:100%;min-height:110px;padding:.6rem;border:1px solid #e6dfcd;border-radius:8px"></textarea>
-        </label>
-        <button class="btn" type="submit"><i class="fa-solid fa-paper-plane"></i> 送信する</button>
-      </div>
-    </form>
+<form action="https://formsubmit.co/bridge.co.ltd.hashimoto@gmail.com" method="POST" class="panel" style="text-align:left">
+  <!-- FormSubmit settings -->
+  <input type="hidden" name="_subject" value="【BRIDGE】お問い合わせ（メンテナンス窓口）">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="https://bridgecoltdhashimoto-commits.github.io/#thanks">
+
+  <!-- 自動返信設定（送信者へ即返信） -->
+  <input type="hidden" name="_autoresponse" value="BRIDGEにお問い合わせありがとうございます。内容を確認のうえ折り返しご連絡いたします。">
+
+  <!-- 迷惑メール防止（ハニーポット） -->
+  <input type="text" name="_honey" style="display:none">
+
+  <div style="display:grid;gap:10px">
+    <label><strong>お名前（カタカナ）</strong><br>
+      <input name="お名前（カタカナ）" required placeholder="ヤマダ タロウ"
+             pattern="^[\u30A0-\u30FF\sー\-]+$"
+             title="全角カタカナで入力してください"
+             style="width:100%;padding:.6rem;border:1px solid #e6dfcd;border-radius:8px">
+    </label>
+
+    <!-- 返信先メールアドレス -->
+    <label><strong>連絡先（メールアドレス）</strong><br>
+      <input name="email" type="email" required placeholder="example@gmail.com"
+             style="width:100%;padding:.6rem;border:1px solid #e6dfcd;border-radius:8px">
+    </label>
+
+    <label><strong>ご用件</strong><br>
+      <textarea name="ご用件" required placeholder="お問い合わせ内容やご希望日時など"
+                style="width:100%;min-height:110px;padding:.6rem;border:1px solid #e6dfcd;border-radius:8px"></textarea>
+    </label>
+
+    <button class="btn" type="submit"><i class="fa-solid fa-paper-plane"></i> 送信する</button>
+  </div>
+</form>
 
     <div class="footer">
       <div>所在地：奈良県桜井市西之宮228-93　／　代表取締役：橋本 大資</div>
