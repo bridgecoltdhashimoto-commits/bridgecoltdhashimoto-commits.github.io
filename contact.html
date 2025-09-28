@@ -1,0 +1,48 @@
+<!DOCTYPE html><html lang="ja"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>お問い合わせ｜BRIDGE</title>
+<link rel="stylesheet" href="./css/style.css"><script defer src="./js/app.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+</head><body>
+<header class="site-header"><div class="container"><nav class="nav">
+  <div class="brand"><img src="./gazou/logo.jpg" alt=""><strong>BRIDGE CO.,LTD.</strong></div>
+  <a href="/" data-path="/">HOME</a><a href="./services.html" data-path="services.html">サービス</a>
+  <a href="./works.html" data-path="works.html">施工事例</a><a href="./company.html" data-path="company.html">会社情報</a>
+  <a href="./contact.html" data-path="contact.html">お問い合わせ</a>
+</nav></div></header>
+
+<main class="container">
+  <div class="card section">
+    <h2><i class="fa-solid fa-handshake-angle"></i> お問い合わせ</h2>
+    <p class="small">以下のフォーム、または <a href="mailto:bridge.co.ltd.hashimoto@gmail.com">メール</a> にて承ります。</p>
+    <form action="https://formsubmit.co/bridge.co.ltd.hashimoto@gmail.com" method="POST" class="panel" style="text-align:left">
+      <input type="hidden" name="_subject" value="【BRIDGE】お問い合わせ">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://bridgecoltdhashimoto-commits.github.io/contact.html#thanks">
+      <input type="hidden" name="_autoresponse" value="BRIDGEにお問い合わせありがとうございます。内容を確認のうえ折り返しご連絡いたします。">
+      <input type="text" name="_honey" style="display:none">
+
+      <div class="grid">
+        <label><strong>お名前（カタカナ）</strong><br>
+          <input class="input" name="お名前（カタカナ）" required placeholder="ヤマダ タロウ"
+                 pattern="^[\u30A0-\u30FF\sー\-]+$" title="全角カタカナで入力してください">
+        </label>
+
+        <label><strong>連絡先（メールアドレス）</strong><br>
+          <input class="input" name="email" type="email" required placeholder="example@gmail.com">
+        </label>
+
+        <label><strong>ご用件</strong><br>
+          <textarea name="ご用件" required placeholder="お問い合わせ内容やご希望日時など" style="min-height:120px" class="input"></textarea>
+        </label>
+
+        <button class="btn" type="submit"><i class="fa-solid fa-paper-plane"></i> 送信する</button>
+      </div>
+    </form>
+    <p id="thanks" class="small" style="margin-top:8px">送信ありがとうございます。担当より折り返しご連絡いたします。</p>
+  </div>
+</main>
+
+<footer class="footer">© 2025 BRIDGE CO.,LTD.</footer>
+</body></html>
