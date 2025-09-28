@@ -6,7 +6,6 @@
 
 <title>BRIDGE｜公式サイト</title>
 <meta name="description" content="株式会社BRIDGE（BRIDGE CO.,LTD.）は、自動車ローン・審査、中古車保証、保証修理、キャンピングカー／キッチンカー製作、車検、板金塗装、事故対応など自動車のトータルサポートを提供します。奈良県桜井市。">
-<!-- ※ メンテ時の noindex を削除。OG を追加 -->
 <meta property="og:title" content="BRIDGE｜公式サイト">
 <meta property="og:description" content="自動車のトータルサポートなら BRIDGE。ローン、保証、修理、製作、車検、板金、事故対応まで。">
 <meta property="og:type" content="website">
@@ -24,15 +23,14 @@
 *{box-sizing:border-box} html,body{margin:0}
 body{font-family:'Noto Sans JP',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif;color:var(--ink);background:var(--bg)}
 .wrapper{min-height:100vh;display:grid;place-items:center;padding:24px}
-.card{max-width:920px;width:100%;background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:28px}
+.card{max-width:980px;width:100%;background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:28px}
 .brand{display:flex;gap:12px;align-items:center;justify-content:flex-start;margin-bottom:10px}
 .brand img{width:44px;height:44px;border-radius:50%;object-fit:cover}
 h1{margin:8px 0 6px;font-size:clamp(22px,4vw,28px)}
 .lead{color:var(--muted);margin:0 0 18px}
-.badge{display:inline-block;background:#eef7ff;border:1px solid #cfe5ff;color:#1e4a88;border-radius:999px;padding:.35rem .7rem;font-weight:700;margin:6px 0 12px}
 .panel{background:#fff;border:1px dashed #e8e1ce;border-radius:12px;padding:14px 16px;margin-top:12px}
 .grid{display:grid;gap:14px}
-.grid.cols-2{grid-template-columns:1fr; }
+.grid.cols-2{grid-template-columns:1fr;}
 @media(min-width:720px){ .grid.cols-2{grid-template-columns:1fr 1fr} }
 .list{margin:0;padding-left:1.1rem}
 .list li{margin:.2rem 0}
@@ -41,11 +39,17 @@ h1{margin:8px 0 6px;font-size:clamp(22px,4vw,28px)}
 .btn{display:inline-flex;gap:.5rem;align-items:center;padding:.8rem 1.1rem;border-radius:10px;background:var(--brand);color:#fff;font-weight:700;border:none;cursor:pointer;text-decoration:none;box-shadow:var(--shadow);transition:.15s transform}
 .btn:hover{transform:translateY(-2px);background:var(--brand-deep)}
 .btn.outline{background:#fff;color:var(--brand);border:2px solid var(--brand)}
-.section{margin-top:20px;padding-top:10px}
-.section h2{font-size:clamp(18px,3.6vw,22px);margin:0 0 6px}
+.section{margin-top:22px;padding-top:6px}
+.section h2{font-size:clamp(18px,3.6vw,22px);margin:0 0 8px}
 .small{font-size:.92rem;color:var(--muted)}
 .footer{margin-top:16px;color:#6b7280;font-size:.9rem;text-align:center}
 hr{border:none;border-top:1px solid #eee;margin:18px 0}
+
+/* ▼ ギャラリー */
+.gallery{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.gallery figure{margin:0;border:1px solid #eee;border-radius:12px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.06);background:#fff}
+.gallery img{display:block;width:100%;height:180px;object-fit:cover}
+.gallery figcaption{padding:8px 10px;font-size:.9rem;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -70,7 +74,6 @@ hr{border:none;border-top:1px solid #eee;margin:18px 0}
       </p>
       <div class="cta-row">
         <a class="btn" href="#contact"><i class="fa-solid fa-paper-plane"></i> お問い合わせ</a>
-        <!-- 将来LINE公式を作成したら href を差し替え -->
         <a class="btn outline" href="mailto:bridge.co.ltd.hashimoto@gmail.com"><i class="fa-solid fa-envelope"></i> メールで相談</a>
       </div>
     </div>
@@ -94,36 +97,31 @@ hr{border:none;border-top:1px solid #eee;margin:18px 0}
         <h2 id="contact"><i class="fa-solid fa-handshake-angle"></i> お問い合わせ</h2>
         <p class="small">下記フォームから送信いただくか、メールでも承ります。</p>
 
-        <!-- 既存の FormSubmit を流用（URLや自動返信はそのまま） -->
+        <!-- FormSubmit -->
         <form action="https://formsubmit.co/bridge.co.ltd.hashimoto@gmail.com" method="POST" class="panel" style="text-align:left">
-          <!-- FormSubmit settings -->
           <input type="hidden" name="_subject" value="【BRIDGE】お問い合わせ">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_next" value="https://bridgecoltdhashimoto-commits.github.io/#thanks">
-
-          <!-- 自動返信 -->
           <input type="hidden" name="_autoresponse" value="BRIDGEにお問い合わせありがとうございます。内容を確認のうえ折り返しご連絡いたします。">
-
-          <!-- 迷惑メール防止（ハニーポット） -->
           <input type="text" name="_honey" style="display:none">
 
           <div class="grid">
             <label><strong>お名前（カタカナ）</strong><br>
               <input name="お名前（カタカナ）" required placeholder="ヤマダ タロウ"
-                     pattern="^[\u30A0-\u30FF\sー\-]+$"
-                     title="全角カタカナで入力してください"
-                     style="width:100%;padding:.6rem;border:1px solid #e6dfcd;border-radius:8px">
+                pattern="^[\u30A0-\u30FF\sー\-]+$"
+                title="全角カタカナで入力してください"
+                style="width:100%;padding:.6rem;border:1px solid #e6dfcd;border-radius:8px">
             </label>
 
             <label><strong>連絡先（メールアドレス）</strong><br>
               <input name="email" type="email" required placeholder="example@gmail.com"
-                     style="width:100%;padding:.6rem;border:1px solid #e6dfcd;border-radius:8px">
+                style="width:100%;padding:.6rem;border:1px solid #e6dfcd;border-radius:8px">
             </label>
 
             <label><strong>ご用件</strong><br>
               <textarea name="ご用件" required placeholder="お問い合わせ内容やご希望日時など"
-                        style="width:100%;min-height:110px;padding:.6rem;border:1px solid #e6dfcd;border-radius:8px"></textarea>
+                style="width:100%;min-height:110px;padding:.6rem;border:1px solid #e6dfcd;border-radius:8px"></textarea>
             </label>
 
             <button class="btn" type="submit"><i class="fa-solid fa-paper-plane"></i> 送信する</button>
@@ -132,6 +130,46 @@ hr{border:none;border-top:1px solid #eee;margin:18px 0}
 
         <p id="thanks" class="small" style="margin-top:8px">送信ありがとうございます。担当より折り返しご連絡いたします。</p>
       </div>
+    </div>
+
+    <hr>
+
+    <!-- 施工事例（ギャラリー） -->
+    <div class="section">
+      <h2><i class="fa-solid fa-images"></i> 施工事例</h2>
+      <div class="gallery">
+        <!-- ▼ gazou/ 配下の全ファイル名をそのまま使用（大文字小文字も厳密一致） -->
+        <figure><img src="./gazou/alphard.hannbai.jpg" alt="アルファード販売" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>アルファード販売</figcaption></figure>
+        <figure><img src="./gazou/audio-custom.jpg" alt="オーディオカスタム" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>オーディオカスタム</figcaption></figure>
+        <figure><img src="./gazou/bedkit.custom.jpg" alt="ベッドキット製作" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>ベッドキット製作</figcaption></figure>
+        <figure><img src="./gazou/diag.jpg" alt="診断機作業" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>診断機作業</figcaption></figure>
+        <figure><img src="./gazou/engine-bay.jpg" alt="エンジンルーム" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>エンジンルーム</figcaption></figure>
+        <figure><img src="./gazou/fukushi.kurumaisu.jpg" alt="福祉車椅子" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>福祉・車椅子</figcaption></figure>
+        <figure><img src="./gazou/fukushi.lift.jpg" alt="福祉リフト" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>福祉リフト</figcaption></figure>
+        <figure><img src="./gazou/glass.koukann.jpg" alt="ガラス交換" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>ガラス交換</figcaption></figure>
+        <figure><img src="./gazou/goo-hosyou-mihonn.jpg" alt="Goo保証 見本" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Goo保証 見本</figcaption></figure>
+        <figure><img src="./gazou/hoshousyo.mihonn.jpg" alt="保証書 見本" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>保証書 見本</figcaption></figure>
+        <figure><img src="./gazou/jimmuny.turbo.hannbai.jpg" alt="ジムニー ターボ販売" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>ジムニー販売</figcaption></figure>
+        <figure><img src="./gazou/koshoulisuku.jpg" alt="故障リスク" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>故障リスク</figcaption></figure>
+        <figure><img src="./gazou/koshourisuku1.jpg" alt="故障リスク 例" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>故障リスク（例）</figcaption></figure>
+        <figure><img src="./gazou/koutokuten-hosyoukoumoku.jpg" alt="高得点 保証項目" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>保証項目</figcaption></figure>
+        <figure><img src="./gazou/koutokutenn.jpg" alt="高得点" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>高得点</figcaption></figure>
+        <figure><img src="./gazou/meter-lamps.jpg" alt="メーター・ランプ" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>メーター・ランプ</figcaption></figure>
+        <figure><img src="./gazou/nv-front.jpg" alt="NV フロント" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>NV フロント</figcaption></figure>
+        <figure><img src="./gazou/nv-rear.jpg" alt="NV リア" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>NV リア</figcaption></figure>
+        <figure><img src="./gazou/okunetto-hoshousyomihonn.jpg" alt="オークネット 保証書見本" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>オークネット保証</figcaption></figure>
+        <figure><img src="./gazou/outerpanel-repair.jpg" alt="外板パネル修理" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>外板修理</figcaption></figure>
+        <figure><img src="./gazou/pit-fuukei.jpg" alt="ピット風景" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>ピット風景</figcaption></figure>
+        <figure><img src="./gazou/prius-front.jpg" alt="プリウス フロント" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>プリウス フロント</figcaption></figure>
+        <figure><img src="./gazou/prius-rear.jpg" alt="プリウス リア" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>プリウス リア</figcaption></figure>
+        <figure><img src="./gazou/puriusu.hannbai.jpg" alt="プリウス 販売" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>プリウス販売</figcaption></figure>
+        <figure><img src="./gazou/transmission.jpg" alt="トランスミッション" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>トランスミッション</figcaption></figure>
+        <figure><img src="./gazou/tyuukoshahoshou.jpg" alt="中古車保証" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>中古車保証</figcaption></figure>
+        <figure><img src="./gazou/tyuukoshahoshou.premium.jpg" alt="中古車保証 プレミアム" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>中古車保証プレミアム</figcaption></figure>
+        <figure><img src="./gazou/underbody.jpg" alt="アンダーボディ" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>アンダーボディ</figcaption></figure>
+        <figure><img src="./gazou/w-monitor-audio-custom.jpg" alt="Wモニター＆オーディオ" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Wモニター＆オーディオ</figcaption></figure>
+      </div>
+      <p class="small" style="margin-top:8px">※ 画像は一例です。追加・差し替えは <code>gazou/</code> にアップして、上の <code>&lt;figure&gt;</code> をコピペしてファイル名を差し替えればOKです。</p>
     </div>
 
     <hr>
