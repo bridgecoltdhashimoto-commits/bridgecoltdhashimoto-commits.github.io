@@ -3,10 +3,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>BRIDGE｜メンテナンス中</title>
-<meta name="description" content="現在、BRIDGE公式サイトはメンテナンス中です。ご用件はメールにてご連絡ください。">
-<!-- 検索避け -->
-<meta name="robots" content="noindex,nofollow">
+
+<title>BRIDGE｜公式サイト</title>
+<meta name="description" content="株式会社BRIDGE（BRIDGE CO.,LTD.）は、自動車ローン・審査、中古車保証、保証修理、キャンピングカー／キッチンカー製作、車検、板金塗装、事故対応など自動車のトータルサポートを提供します。奈良県桜井市。">
+<!-- ※ メンテ時の noindex を削除。OG を追加 -->
+<meta property="og:title" content="BRIDGE｜公式サイト">
+<meta property="og:description" content="自動車のトータルサポートなら BRIDGE。ローン、保証、修理、製作、車検、板金、事故対応まで。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bridgecoltdhashimoto-commits.github.io">
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
@@ -20,74 +24,131 @@
 *{box-sizing:border-box} html,body{margin:0}
 body{font-family:'Noto Sans JP',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif;color:var(--ink);background:var(--bg)}
 .wrapper{min-height:100vh;display:grid;place-items:center;padding:24px}
-.card{max-width:720px;width:100%;background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:28px;text-align:center}
-.brand{display:flex;gap:12px;align-items:center;justify-content:center;margin-bottom:10px}
+.card{max-width:920px;width:100%;background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:28px}
+.brand{display:flex;gap:12px;align-items:center;justify-content:flex-start;margin-bottom:10px}
 .brand img{width:44px;height:44px;border-radius:50%;object-fit:cover}
-h1{margin:8px 0 10px;font-size:clamp(22px,4vw,28px)}
-.lead{color:var(--muted);margin:0 0 16px}
-.badge{display:inline-block;background:#fff7ea;border:1px solid #f0e4c7;color:#8a6b1a;border-radius:999px;padding:.3rem .7rem;font-weight:700;margin-bottom:8px}
+h1{margin:8px 0 6px;font-size:clamp(22px,4vw,28px)}
+.lead{color:var(--muted);margin:0 0 18px}
+.badge{display:inline-block;background:#eef7ff;border:1px solid #cfe5ff;color:#1e4a88;border-radius:999px;padding:.35rem .7rem;font-weight:700;margin:6px 0 12px}
 .panel{background:#fff;border:1px dashed #e8e1ce;border-radius:12px;padding:14px 16px;margin-top:12px}
+.grid{display:grid;gap:14px}
+.grid.cols-2{grid-template-columns:1fr; }
+@media(min-width:720px){ .grid.cols-2{grid-template-columns:1fr 1fr} }
+.list{margin:0;padding-left:1.1rem}
+.list li{margin:.2rem 0}
+.kv{display:flex;flex-direction:column;gap:14px}
+.cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
 .btn{display:inline-flex;gap:.5rem;align-items:center;padding:.8rem 1.1rem;border-radius:10px;background:var(--brand);color:#fff;font-weight:700;border:none;cursor:pointer;text-decoration:none;box-shadow:var(--shadow);transition:.15s transform}
 .btn:hover{transform:translateY(-2px);background:var(--brand-deep)}
-.footer{margin-top:14px;color:#6b7280;font-size:.9rem}
+.btn.outline{background:#fff;color:var(--brand);border:2px solid var(--brand)}
+.section{margin-top:20px;padding-top:10px}
+.section h2{font-size:clamp(18px,3.6vw,22px);margin:0 0 6px}
+.small{font-size:.92rem;color:var(--muted)}
+.footer{margin-top:16px;color:#6b7280;font-size:.9rem;text-align:center}
+hr{border:none;border-top:1px solid #eee;margin:18px 0}
 </style>
 </head>
 <body>
 <div class="wrapper">
   <div class="card">
+
+    <!-- ヘッダー -->
     <div class="brand">
       <img src="./gazou/logo.jpg" alt="BRIDGE ロゴ" onerror="this.style.display='none'">
-      <strong>BRIDGE CO.,LTD.</strong>
+      <div>
+        <strong>BRIDGE CO.,LTD.</strong><br>
+        <span class="small">奈良県桜井市｜自動車のトータルサポート</span>
+      </div>
     </div>
 
-    <span class="badge"><i class="fa-solid fa-wrench"></i> メンテナンス中</span>
-    <h1>只今、サイトをメンテナンスしています。</h1>
-    <p class="lead">
-      コンテンツ更新のため、一時的にページを停止しています。<br>
-      恐れ入りますが、<strong>お問い合わせ・ご予約は下記ボタン</strong>よりメールでご連絡ください。
-    </p>
+    <!-- キービジュアル -->
+    <div class="kv">
+      <h1>自動車のトータルサポートなら <strong>BRIDGE</strong></h1>
+      <p class="lead">
+        ローン契約・審査／中古車保証・保証修理／キャンピングカー・キッチンカー製作／車検／板金塗装／事故対応まで。<br>
+        ワンストップでお客様のお困りごとにお応えします。
+      </p>
+      <div class="cta-row">
+        <a class="btn" href="#contact"><i class="fa-solid fa-paper-plane"></i> お問い合わせ</a>
+        <!-- 将来LINE公式を作成したら href を差し替え -->
+        <a class="btn outline" href="mailto:bridge.co.ltd.hashimoto@gmail.com"><i class="fa-solid fa-envelope"></i> メールで相談</a>
+      </div>
+    </div>
 
-    <!-- メール送信用：FormSubmit（Gmailへ転送） -->
-<form action="https://formsubmit.co/bridge.co.ltd.hashimoto@gmail.com" method="POST" class="panel" style="text-align:left">
-  <!-- FormSubmit settings -->
-  <input type="hidden" name="_subject" value="【BRIDGE】お問い合わせ（メンテナンス窓口）">
-  <input type="hidden" name="_template" value="table">
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_next" value="https://bridgecoltdhashimoto-commits.github.io/#thanks">
+    <hr>
 
-  <!-- 自動返信設定（送信者へ即返信） -->
-  <input type="hidden" name="_autoresponse" value="BRIDGEにお問い合わせありがとうございます。内容を確認のうえ折り返しご連絡いたします。">
+    <!-- サービス概要 -->
+    <div class="section grid cols-2">
+      <div>
+        <h2><i class="fa-solid fa-car-wrench"></i> 提供サービス</h2>
+        <ul class="list">
+          <li>自動車ローン契約・審査のご相談</li>
+          <li>中古車保証の加入サポート／保証修理</li>
+          <li>キャンピングカー・キッチンカーの製作</li>
+          <li>車検、点検、板金塗装</li>
+          <li>事故・トラブル時の対応窓口</li>
+        </ul>
+        <p class="small">※詳細はお問い合わせください。ご要望に応じたプランをご提案します。</p>
+      </div>
+      <div>
+        <h2 id="contact"><i class="fa-solid fa-handshake-angle"></i> お問い合わせ</h2>
+        <p class="small">下記フォームから送信いただくか、メールでも承ります。</p>
 
-  <!-- 迷惑メール防止（ハニーポット） -->
-  <input type="text" name="_honey" style="display:none">
+        <!-- 既存の FormSubmit を流用（URLや自動返信はそのまま） -->
+        <form action="https://formsubmit.co/bridge.co.ltd.hashimoto@gmail.com" method="POST" class="panel" style="text-align:left">
+          <!-- FormSubmit settings -->
+          <input type="hidden" name="_subject" value="【BRIDGE】お問い合わせ">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://bridgecoltdhashimoto-commits.github.io/#thanks">
 
-  <div style="display:grid;gap:10px">
-    <label><strong>お名前（カタカナ）</strong><br>
-      <input name="お名前（カタカナ）" required placeholder="ヤマダ タロウ"
-             pattern="^[\u30A0-\u30FF\sー\-]+$"
-             title="全角カタカナで入力してください"
-             style="width:100%;padding:.6rem;border:1px solid #e6dfcd;border-radius:8px">
-    </label>
+          <!-- 自動返信 -->
+          <input type="hidden" name="_autoresponse" value="BRIDGEにお問い合わせありがとうございます。内容を確認のうえ折り返しご連絡いたします。">
 
-    <!-- 返信先メールアドレス -->
-    <label><strong>連絡先（メールアドレス）</strong><br>
-      <input name="email" type="email" required placeholder="example@gmail.com"
-             style="width:100%;padding:.6rem;border:1px solid #e6dfcd;border-radius:8px">
-    </label>
+          <!-- 迷惑メール防止（ハニーポット） -->
+          <input type="text" name="_honey" style="display:none">
 
-    <label><strong>ご用件</strong><br>
-      <textarea name="ご用件" required placeholder="お問い合わせ内容やご希望日時など"
-                style="width:100%;min-height:110px;padding:.6rem;border:1px solid #e6dfcd;border-radius:8px"></textarea>
-    </label>
+          <div class="grid">
+            <label><strong>お名前（カタカナ）</strong><br>
+              <input name="お名前（カタカナ）" required placeholder="ヤマダ タロウ"
+                     pattern="^[\u30A0-\u30FF\sー\-]+$"
+                     title="全角カタカナで入力してください"
+                     style="width:100%;padding:.6rem;border:1px solid #e6dfcd;border-radius:8px">
+            </label>
 
-    <button class="btn" type="submit"><i class="fa-solid fa-paper-plane"></i> 送信する</button>
-  </div>
-</form>
+            <label><strong>連絡先（メールアドレス）</strong><br>
+              <input name="email" type="email" required placeholder="example@gmail.com"
+                     style="width:100%;padding:.6rem;border:1px solid #e6dfcd;border-radius:8px">
+            </label>
 
+            <label><strong>ご用件</strong><br>
+              <textarea name="ご用件" required placeholder="お問い合わせ内容やご希望日時など"
+                        style="width:100%;min-height:110px;padding:.6rem;border:1px solid #e6dfcd;border-radius:8px"></textarea>
+            </label>
+
+            <button class="btn" type="submit"><i class="fa-solid fa-paper-plane"></i> 送信する</button>
+          </div>
+        </form>
+
+        <p id="thanks" class="small" style="margin-top:8px">送信ありがとうございます。担当より折り返しご連絡いたします。</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- 会社情報 -->
+    <div class="section">
+      <h2><i class="fa-solid fa-building"></i> 会社情報</h2>
+      <p class="small">
+        所在地：奈良県桜井市西之宮228-93 ／ 代表取締役：橋本 大資
+      </p>
+    </div>
+
+    <!-- フッター -->
     <div class="footer">
-      <div>所在地：奈良県桜井市西之宮228-93　／　代表取締役：橋本 大資</div>
-      <div id="thanks">© 2025 BRIDGE CO.,LTD. All rights reserved.</div>
+      © 2025 BRIDGE CO.,LTD. All rights reserved.
     </div>
+
   </div>
 </div>
 </body>
