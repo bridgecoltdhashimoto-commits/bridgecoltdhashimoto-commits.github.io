@@ -3,29 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>BRIDGE｜公式サイト</title>
-
-  <!-- Basic SEO -->
   <meta name="description" content="株式会社BRIDGEは、自動車ローン・中古車保証・修理・製作・車検・板金・事故対応までトータルにサポート。奈良県桜井市。">
-  <link rel="canonical" href="https://bridgecoltdhashimoto-commits.github.io/">
 
-  <!-- Open Graph -->
+  <!-- ✅ Facebook ドメイン認証（ここをあなたのトークンに） -->
+  <meta name="facebook-domain-verification" content="FACEBOOK_VERIFICATION_TOKEN" />
+
+  <!-- 基本/OG -->
+  <link rel="canonical" href="https://bridgecoltdhashimoto-commits.github.io/">
   <meta property="og:title" content="BRIDGE｜公式サイト">
   <meta property="og:description" content="自動車のトータルサポートならBRIDGE。">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://bridgecoltdhashimoto-commits.github.io">
-  <meta property="og:site_name" content="BRIDGE CO., LTD.">
+  <meta property="og:url" content="https://bridgecoltdhashimoto-commits.github.io/">
+  <meta property="og:image" content="https://bridgecoltdhashimoto-commits.github.io/gazou/logo.jpg">
+  <meta property="og:site_name" content="株式会社BRIDGE">
 
-  <!-- ★ Meta ドメイン認証（トークン置換） -->
-  <meta name="facebook-domain-verification" content="CONTENT_VALUE_HERE" />
+  <!-- Twitter（任意だが付けておくと無難） -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BRIDGE｜公式サイト">
+  <meta name="twitter:description" content="自動車のトータルサポートならBRIDGE。">
+  <meta name="twitter:image" content="https://bridgecoltdhashimoto-commits.github.io/gazou/logo.jpg">
 
-  <!-- Fonts / CSS / JS -->
+  <!-- フォント/スタイル -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="./css/style.css">
-  <script defer src="./css/js/app.js"></script>
 
-  <!-- 構造化データ（法人 + 住所 + 電話） -->
+  <!-- 構造化データ（Organization） -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -33,18 +38,19 @@
     "name": "株式会社BRIDGE",
     "url": "https://bridgecoltdhashimoto-commits.github.io/",
     "logo": "https://bridgecoltdhashimoto-commits.github.io/gazou/logo.jpg",
-    "telephone": "+81-90-9507-8939",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "西之宮228-93",
-      "addressLocality": "桜井市",
+      "addressCountry": "JP",
+      "postalCode": "6330066",
       "addressRegion": "奈良県",
-      "postalCode": "633-0066",
-      "addressCountry": "JP"
-    },
-    "sameAs": []
+      "addressLocality": "桜井市",
+      "streetAddress": "西之宮228-93"
+    }
   }
   </script>
+
+  <!-- 必要ならフォーム用のJS等 -->
+  <script defer src="./css/js/app.js"></script>
 </head>
 <body>
 
@@ -96,14 +102,6 @@
   </section>
 </main>
 
-<!-- ★ 連絡先を“可視テキスト”で掲載（Meta照合強化） -->
-<footer class="footer" role="contentinfo">
-  <small>
-    © 2025 BRIDGE CO., LTD. All rights reserved.
-    ｜ 住所：〒633-0066 奈良県桜井市西之宮228-93
-    ｜ TEL：<a href="tel:+819095078939">090-9507-8939</a>
-  </small>
-</footer>
-
+<footer class="footer">© 2025 BRIDGE CO.,LTD. All rights reserved.</footer>
 </body>
 </html>
