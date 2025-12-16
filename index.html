@@ -10,217 +10,69 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
-        /* ベーススタイル */
+        /* ベーススタイル（共通） */
         :root {
-            --primary-color: #0f172a; /* 深いネイビー */
-            --accent-color: #3b82f6;  /* 知的なブルー */
-            --text-color: #334155;    /* 読みやすいグレー */
-            --bg-light: #f8fafc;      /* 清潔感のある白 */
-            --white: #ffffff;
+            --primary-color: #0f172a; --accent-color: #3b82f6; --text-color: #334155;
+            --bg-light: #f8fafc; --white: #ffffff;
         }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background-color: var(--bg-light); }
+        a { text-decoration: none; color: inherit; transition: opacity 0.3s ease; }
+        a:hover { opacity: 0.7; }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
-            color: var(--text-color);
-            line-height: 1.8;
-            background-color: var(--bg-light);
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: opacity 0.3s ease;
-        }
-
-        a:hover {
-            opacity: 0.7;
-        }
-
-        /* ヘッダー */
+        /* ヘッダー（共通） */
         header {
-            position: fixed;
-            width: 100%;
-            top: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 5%;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 5%; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); letter-spacing: 0.05em; }
+        nav ul { display: flex; list-style: none; gap: 30px; }
+        nav a { font-size: 0.95rem; font-weight: 500; color: var(--primary-color); position: relative; }
+        nav a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: var(--accent-color); transition: width 0.3s; }
+        nav a:hover::after { width: 100%; }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            letter-spacing: 0.05em;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        nav a {
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--primary-color);
-            position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--accent-color);
-            transition: width 0.3s;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* ヒーローセクション（トップ画像エリア） */
+        /* ヒーローセクション（修正部分） */
         .hero {
             height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: var(--white);
-            padding: 0 20px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; color: var(--white); padding: 0 20px;
+            /* ロゴを背景に設定し、暗いオーバーレイをかける */
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)),
+                        url('gazou/logo.jpg'); /* ロゴ画像のパス */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* パララックス効果 */
         }
+        .hero h1 { font-size: 4rem; font-weight: 700; margin-bottom: 20px; letter-spacing: 0.1em; line-height: 1.1; }
+        .hero p { font-size: 1.2rem; max-width: 600px; margin-bottom: 40px; font-weight: 300; opacity: 0.9; }
+        .btn { display: inline-block; padding: 15px 40px; background-color: var(--accent-color); color: var(--white); font-weight: 700; border-radius: 50px; letter-spacing: 0.05em; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4); }
 
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            letter-spacing: 0.1em;
-            line-height: 1.1;
-        }
+        /* コンテンツセクション（共通） */
+        section { padding: 100px 5%; }
+        .section-title { font-size: 2.5rem; text-align: center; margin-bottom: 60px; color: var(--primary-color); letter-spacing: 0.05em; }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
+        .card { background: var(--white); padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease; }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { font-size: 1.5rem; margin-bottom: 20px; color: var(--primary-color); }
+        .card p { margin-bottom: 30px; color: #64748b; }
+        .card-link { color: var(--accent-color); font-weight: 700; display: inline-flex; align-items: center; }
+        .card-link::after { content: '→'; margin-left: 8px; transition: margin-left 0.3s; }
+        .card-link:hover::after { margin-left: 12px; }
 
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin-bottom: 40px;
-            font-weight: 300;
-            opacity: 0.9;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 40px;
-            background-color: var(--accent-color);
-            color: var(--white);
-            font-weight: 700;
-            border-radius: 50px;
-            letter-spacing: 0.05em;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
-        }
-
-        /* コンテンツセクション共通 */
-        section {
-            padding: 100px 5%;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 60px;
-            color: var(--primary-color);
-            letter-spacing: 0.05em;
-        }
-
-        /* グリッドレイアウト（Services, Worksなどへの誘導） */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-        }
-
-        .card p {
-            margin-bottom: 30px;
-            color: #64748b;
-        }
-
-        .card-link {
-            color: var(--accent-color);
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .card-link::after {
-            content: '→';
-            margin-left: 8px;
-            transition: margin-left 0.3s;
-        }
-
-        .card-link:hover::after {
-            margin-left: 12px;
-        }
-
-        /* フッター */
-        footer {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 60px 5%;
-            text-align: center;
-        }
-
-        footer p {
-            font-size: 0.9rem;
-            opacity: 0.6;
-            margin-top: 20px;
-        }
+        /* フッター（共通） */
+        footer { background-color: var(--primary-color); color: var(--white); padding: 60px 5%; text-align: center; }
+        footer p { font-size: 0.9rem; opacity: 0.6; margin-top: 20px; }
 
         /* モバイル対応 */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            nav {
-                display: none; /* 簡易的に非表示（本来はハンバーガーメニュー推奨） */
-            }
+            .hero h1 { font-size: 2.5rem; }
+            nav { display: none; } /* 簡易非表示 */
         }
     </style>
 </head>
 <body>
-
     <header>
         <div class="logo">BRIDGE CO., LTD.</div>
         <nav>
@@ -248,13 +100,11 @@
                 <p>私たちのビジョン、ミッション、そして会社概要についてご紹介します。</p>
                 <a href="company.html" class="card-link">企業情報を見る</a>
             </div>
-
             <div class="card">
                 <h3>Services</h3>
                 <p>BRIDGE OSをはじめとする、革新的なプロダクトとサービスのご案内。</p>
                 <a href="services.html" class="card-link">サービス詳細</a>
             </div>
-
             <div class="card">
                 <h3>Works</h3>
                 <p>これまでの実績、プロジェクト、そして私たちの挑戦の軌跡。</p>
@@ -263,10 +113,9 @@
         </div>
     </section>
 
-    <footer>
+    footer>
         <div class="logo">BRIDGE CO., LTD.</div>
         <p>&copy; 2025 BRIDGE CO., LTD. All Rights Reserved.</p>
     </footer>
-
 </body>
 </html>
