@@ -1,61 +1,272 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BRIDGE CO., LTD. | Global Innovation</title>
+    <meta name="description" content="世界をつなぐ架け橋となる。BRIDGE CO., LTD.の公式ウェブサイトです。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ベーススタイル */
+        :root {
+            --primary-color: #0f172a; /* 深いネイビー */
+            --accent-color: #3b82f6;  /* 知的なブルー */
+            --text-color: #334155;    /* 読みやすいグレー */
+            --bg-light: #f8fafc;      /* 清潔感のある白 */
+            --white: #ffffff;
+        }
 
-  <!-- 基本SEO -->
-  <title>BRIDGE｜公式サイト</title>
-  <meta name="description" content="株式会社BRIDGEは、自動車リユース・中古部品販売・修理・車検・板金・事業サポートを行う奈良県橿原市の会社です。" />
-  <link rel="canonical" href="https://bridgecoldhashimoto-commits.github.io/" />
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="BRIDGE｜公式サイト" />
-  <meta property="og:description" content="株式会社BRIDGEは、自動車業界のトータルサポートを行う企業です。" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://bridgecoldhashimoto-commits.github.io/" />
-  <meta property="og:site_name" content="BRIDGE Co., LTD." />
+        body {
+            font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
+            color: var(--text-color);
+            line-height: 1.8;
+            background-color: var(--bg-light);
+        }
 
-  <!-- Facebookドメイン認証タグ（Meta要求準拠） -->
-  <meta name="facebook-domain-verification" content="83rolmda22vwxxltk3mz5obobmgtq1" />
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: opacity 0.3s ease;
+        }
 
-  <!-- フォント／CSS -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./css/style.css" />
-  <script defer src="./js/app.js"></script>
+        a:hover {
+            opacity: 0.7;
+        }
 
-  <!-- 構造化データ（Google対応） -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "株式会社BRIDGE",
-    "url": "https://bridgecoldhashimoto-commits.github.io/",
-    "logo": "https://bridgecoldhashimoto-commits.github.io/gazou/logo.jpg",
-    "telephone": "+81-90-9877-3939",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "奈良県橿原市",
-      "addressCountry": "JP"
-    }
-  }
-  </script>
+        /* ヘッダー */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: 0.05em;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* ヒーローセクション（トップ画像エリア） */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 0.1em;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 40px;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: var(--accent-color);
+            color: var(--white);
+            font-weight: 700;
+            border-radius: 50px;
+            letter-spacing: 0.05em;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        /* コンテンツセクション共通 */
+        section {
+            padding: 100px 5%;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--primary-color);
+            letter-spacing: 0.05em;
+        }
+
+        /* グリッドレイアウト（Services, Worksなどへの誘導） */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .card p {
+            margin-bottom: 30px;
+            color: #64748b;
+        }
+
+        .card-link {
+            color: var(--accent-color);
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .card-link::after {
+            content: '→';
+            margin-left: 8px;
+            transition: margin-left 0.3s;
+        }
+
+        .card-link:hover::after {
+            margin-left: 12px;
+        }
+
+        /* フッター */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 60px 5%;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.6;
+            margin-top: 20px;
+        }
+
+        /* モバイル対応 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            nav {
+                display: none; /* 簡易的に非表示（本来はハンバーガーメニュー推奨） */
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <header>
-    <h1>BRIDGE｜公式サイト</h1>
-  </header>
 
-  <main>
-    <p>Facebook認証タグは<head>セクション内に正しく設置されています。</p>
-    <p>最終更新日: 2025-11-02</p>
-  </main>
+    <header>
+        <div class="logo">BRIDGE CO., LTD.</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="company.html">Company</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="works.html">Works</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <footer>
-    <p>© 2025 BRIDGE Co., LTD. All Rights Reserved.</p>
-  </footer>
+    <div class="hero">
+        <h1>CONNECTING<br>THE WORLD</h1>
+        <p>テクノロジーと感性の融合で、新しい価値を創造する。<br>次世代のOS開発から、グローバルなビジネスソリューションまで。</p>
+        <a href="contact.html" class="btn">お問い合わせ</a>
+    </div>
+
+    <section>
+        <h2 class="section-title">Explore Our World</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>Company</h3>
+                <p>私たちのビジョン、ミッション、そして会社概要についてご紹介します。</p>
+                <a href="company.html" class="card-link">企業情報を見る</a>
+            </div>
+
+            <div class="card">
+                <h3>Services</h3>
+                <p>BRIDGE OSをはじめとする、革新的なプロダクトとサービスのご案内。</p>
+                <a href="services.html" class="card-link">サービス詳細</a>
+            </div>
+
+            <div class="card">
+                <h3>Works</h3>
+                <p>これまでの実績、プロジェクト、そして私たちの挑戦の軌跡。</p>
+                <a href="works.html" class="card-link">実績紹介</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="logo">BRIDGE CO., LTD.</div>
+        <p>&copy; 2025 BRIDGE CO., LTD. All Rights Reserved.</p>
+    </footer>
+
 </body>
 </html>
