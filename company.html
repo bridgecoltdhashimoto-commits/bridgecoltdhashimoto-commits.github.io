@@ -1,24 +1,117 @@
-<!DOCTYPE html><html lang="ja"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>会社情報｜BRIDGE</title>
-<link rel="stylesheet" href="./css/style.css"><script defer src="./js/app.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
-</head><body>
-<header class="site-header"><div class="container"><nav class="nav">
-  <div class="brand"><img src="./gazou/logo.jpg" alt=""><strong>BRIDGE CO.,LTD.</strong></div>
-  <a href="/" data-path="/">HOME</a><a href="./services.html" data-path="services.html">サービス</a>
-  <a href="./works.html" data-path="works.html">施工事例</a><a href="./company.html" data-path="company.html">会社情報</a>
-  <a href="./contact.html" data-path="contact.html">お問い合わせ</a>
-</nav></div></header>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company | BRIDGE CO., LTD.</title>
+    <meta name="description" content="BRIDGE CO., LTD.の会社概要、ビジョン、ミッションをご紹介します。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ベーススタイル・ヘッダー・フッターはindex.htmlと共通 */
+        :root { --primary-color: #0f172a; --accent-color: #3b82f6; --text-color: #334155; --bg-light: #f8fafc; --white: #ffffff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background-color: var(--bg-light); }
+        a { text-decoration: none; color: inherit; transition: opacity 0.3s ease; }
+        a:hover { opacity: 0.7; }
+        header { position: fixed; width: 100%; top: 0; z-index: 1000; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); letter-spacing: 0.05em; }
+        nav ul { display: flex; list-style: none; gap: 30px; }
+        nav a { font-size: 0.95rem; font-weight: 500; color: var(--primary-color); position: relative; }
+        nav a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: var(--accent-color); transition: width 0.3s; }
+        nav a:hover::after { width: 100%; }
+        footer { background-color: var(--primary-color); color: var(--white); padding: 60px 5%; text-align: center; margin-top: auto; }
+        footer p { font-size: 0.9rem; opacity: 0.6; margin-top: 20px; }
+        @media (max-width: 768px) { nav { display: none; } }
 
-<main class="container">
-  <div class="card section">
-    <h2>会社情報</h2>
-    <p class="lead">所在地：奈良県桜井市西之宮228-93 ／ 代表取締役：橋本 大資</p>
-    <hr>
-    <p class="small">※地図の埋め込みや沿革、事業内容の詳細など、追って追加できます。</p>
-  </div>
-</main>
+        /* 下層ページ用スタイル */
+        .page-header {
+            padding: 180px 5% 80px; /* ヘッダーの分だけ余白を空ける */
+            text-align: center;
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        .page-title { font-size: 3rem; font-weight: 700; letter-spacing: 0.05em; }
 
-<footer class="footer">© 2025 BRIDGE CO.,LTD.</footer>
-</body></html>
+        section { padding: 80px 5%; max-width: 1000px; margin: 0 auto; }
+        .section-title { font-size: 2rem; text-align: center; margin-bottom: 40px; color: var(--primary-color); }
+
+        /* ミッション・ビジョン */
+        .mission-vision { text-align: center; margin-bottom: 60px; }
+        .mission-vision h3 { font-size: 1.5rem; color: var(--accent-color); margin-bottom: 20px; }
+        .mission-vision p { font-size: 1.1rem; margin-bottom: 40px; }
+
+        /* 会社概要テーブル */
+        .company-info { background: var(--white); padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+        .company-table { width: 100%; border-collapse: collapse; }
+        .company-table th, .company-table td { padding: 20px; text-align: left; border-bottom: 1px solid #e2e8f0; }
+        .company-table th { width: 30%; color: var(--primary-color); font-weight: 700; }
+
+        /* お問い合わせ誘導エリア */
+        .contact-cta { text-align: center; background-color: #e2e8f0; padding: 60px 5%; border-radius: 12px; margin-top: 60px; }
+        .btn { display: inline-block; padding: 15px 40px; background-color: var(--accent-color); color: var(--white); font-weight: 700; border-radius: 50px; letter-spacing: 0.05em; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4); margin-top: 20px;}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">BRIDGE CO., LTD.</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="company.html">Company</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="works.html">Works</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <h1 class="page-title">Company</h1>
+    </div>
+
+    <section>
+        <div class="mission-vision">
+            <h3>Vision</h3>
+            <p>世界中の人々とテクノロジーを繋ぎ、<br>国境を越えた新しい可能性を創造する。</p>
+            <h3>Mission</h3>
+            <p>感性と技術の融合により、<br>これまでにないユーザー体験とビジネス価値を提供する。</p>
+        </div>
+
+        <h2 class="section-title">会社概要</h2>
+        <div class="company-info">
+            <table class="company-table">
+                <tr>
+                    <th>会社名</th>
+                    <td>BRIDGE CO., LTD.</td>
+                </tr>
+                <tr>
+                    <th>設立</th>
+                    <td>2025年（予定）</td>
+                </tr>
+                <tr>
+                    <th>事業内容</th>
+                    <td>
+                        ・次世代OSの研究・開発<br>
+                        ・グローバルビジネスソリューションの提供<br>
+                        ・UI/UXデザインコンサルティング
+                    </td>
+                </tr>
+                </table>
+        </div>
+
+        <div class="contact-cta">
+            <h2>お問い合わせ</h2>
+            <p>事業に関するご相談、協業のご提案など、お気軽にお問い合わせください。<br>担当者より折り返しご連絡いたします。</p>
+            <a href="contact.html" class="btn">お問い合わせフォームへ</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="logo">BRIDGE CO., LTD.</div>
+        <p>&copy; 2025 BRIDGE CO., LTD. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
