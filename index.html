@@ -3,311 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BRIDGE OS | Architecting the Future</title>
-    <meta name="description" content="次世代OS「BRIDGE OS」開発。世界を変えるイノベーションをここから。">
-    
+    <title>BRIDGE CO., LTD. | The Future OS</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&family=Noto+Sans+JP:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;500;700&family=Zen+Old+Mincho:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- テック系リセットCSS --- */
         :root {
-            --bg-dark: #050510;       /* ほぼ黒に近いネイビー */
-            --bg-panel: #1a1a2e;      /* パネル色 */
-            --primary: #00d4ff;       /* ネオンシアン */
-            --secondary: #e94560;     /* アクセントレッド */
-            --gold: #ffd700;          /* ロゴのゴールドに合わせた色 */
-            --text-main: #ffffff;
-            --text-sub: #a0a0b0;
+            --bg-deep: #000000;
+            --text-gold: #D4AF37;
+            --text-white: #f0f0f0;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(212, 175, 55, 0.3);
+            --gold-gradient: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Rajdhani', 'Noto Sans JP', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
+            font-family: 'Montserrat', 'Zen Old Mincho', serif;
+            background-color: var(--bg-deep);
+            color: var(--text-white);
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(233, 69, 96, 0.1) 0%, transparent 20%);
         }
 
-        a { text-decoration: none; transition: 0.3s; }
+        a { text-decoration: none; transition: all 0.4s ease; }
 
-        /* --- ヘッダー --- */
+        /* 背景のアニメーション（深海のような光） */
+        .ambient-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1;
+            background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #000000 100%);
+            overflow: hidden;
+        }
+        .ambient-bg::after {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(60, 100, 255, 0.05), transparent 60%);
+            animation: rotateBg 30s linear infinite;
+        }
+        @keyframes rotateBg { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* ヘッダー */
         header {
             position: fixed; width: 100%; top: 0; z-index: 1000;
-            background: rgba(5, 5, 16, 0.8);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 30px 5%;
             display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 5%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
         }
 
         .brand {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--text-main);
-            letter-spacing: 2px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.1em;
+        }
+
+        nav ul { display: flex; gap: 40px; list-style: none; }
+        nav a {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
         }
-        .brand span { color: var(--primary); }
+        nav a:hover { color: var(--text-gold); text-shadow: 0 0 10px rgba(212, 175, 55, 0.5); }
 
-        nav ul { display: flex; list-style: none; gap: 30px; }
-        nav a {
-            color: var(--text-sub);
-            font-weight: 500;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            position: relative;
-        }
-        nav a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
-
-        /* --- ヒーローセクション（メイン） --- */
+        /* ヒーローセクション */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            height: 100vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
             text-align: center;
-            padding: 120px 20px 50px;
             position: relative;
         }
 
-        /* ロゴのスタイル：光るコアのような演出 */
-        .logo-container {
-            width: 200px;
-            height: 200px;
-            margin-bottom: 40px;
-            position: relative;
-            z-index: 10;
+        .logo-wrapper {
+            width: 180px; height: 180px; margin-bottom: 40px;
+            border-radius: 50%;
+            padding: 5px;
+            background: var(--gold-gradient);
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.2);
+            animation: pulse 3s infinite ease-in-out;
         }
-
-        /* 画像を円形に切り抜き、内側から発光させる */
         .logo-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* 比率を保ってトリミング */
-            border-radius: 50%;
-            border: 2px solid rgba(255, 215, 0, 0.3); /* ゴールドの枠線 */
-            box-shadow: 
-                0 0 30px rgba(255, 215, 0, 0.2),
-                inset 0 0 20px rgba(0,0,0,0.5);
-            transition: transform 0.5s ease;
-            background: #fff; /* ロゴ画像の透過部分がもしあれば白にする */
-        }
-        
-        .logo-container:hover .logo-img {
-            transform: scale(1.05) rotate(5deg);
-            box-shadow: 0 0 50px rgba(255, 215, 0, 0.6);
+            width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
+            border: 4px solid #000;
         }
 
-        /* 背景のアニメーションリング */
-        .ring {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
-            z-index: 1;
-        }
-        .r1 { width: 300px; height: 300px; animation: spin 10s linear infinite; border-color: rgba(0, 212, 255, 0.2); border-style: dashed;}
-        .r2 { width: 450px; height: 450px; animation: spin 20s linear infinite reverse; border-color: rgba(233, 69, 96, 0.2); }
-
-        @keyframes spin { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
-
-        /* テキスト演出 */
-        .hero h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 4rem;
-            line-height: 1;
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 5vw;
+            line-height: 1.1;
             margin-bottom: 20px;
-            z-index: 10;
-            background: linear-gradient(to right, #fff, #b0b0b0);
+            letter-spacing: 0.05em;
+            background: linear-gradient(to right, #fff, #aaa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        
-        .typewriter {
-            font-family: 'Share Tech Mono', monospace; /* なければ等幅フォント */
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 40px;
-            border-right: 2px solid var(--primary);
-            display: inline-block;
-            white-space: nowrap;
-            overflow: hidden;
-            animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite;
-            z-index: 10;
-        }
 
-        /* ボタン */
-        .btn-glitch {
-            padding: 15px 50px;
+        .subtitle {
             font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--bg-dark);
-            background: var(--primary);
-            border: none;
-            clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
-            cursor: pointer;
-            position: relative;
-            z-index: 10;
-            letter-spacing: 2px;
-            transition: 0.3s;
-        }
-        .btn-glitch:hover {
-            background: var(--white);
-            box-shadow: 0 0 30px var(--primary);
-            color: var(--primary);
-        }
-
-        /* --- グリッドメニュー（アプリランチャー風） --- */
-        section { padding: 100px 5%; position: relative; z-index: 5; }
-        
-        .section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
-            text-align: center;
+            color: var(--text-gold);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
             margin-bottom: 60px;
-            color: var(--text-main);
-        }
-        
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
+            opacity: 0.8;
         }
 
-        .tech-card {
-            background: rgba(26, 26, 46, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            backdrop-filter: blur(10px);
-            transition: 0.3s;
+        /* プレミアムボタン */
+        .btn-luxury {
             position: relative;
+            padding: 18px 60px;
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            color: var(--text-gold);
+            border: 1px solid var(--text-gold);
+            background: transparent;
             overflow: hidden;
+            letter-spacing: 0.2em;
+            transition: 0.5s;
+            cursor: pointer;
         }
-
-        .tech-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 4px; height: 100%;
-            background: var(--primary);
-            opacity: 0;
-            transition: 0.3s;
+        .btn-luxury::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: var(--gold-gradient);
+            transition: 0.5s; z-index: -1;
         }
+        .btn-luxury:hover { color: #000; border-color: transparent; box-shadow: 0 0 30px rgba(212, 175, 55, 0.6); }
+        .btn-luxury:hover::before { left: 0; }
 
-        .tech-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            border-color: var(--primary);
-        }
-        .tech-card:hover::before { opacity: 1; }
-
-        .tech-card h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: var(--white);
+        /* グリッドナビゲーション */
+        .content-grid {
+            position: absolute; bottom: 50px; width: 90%;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+            max-width: 1200px;
         }
         
-        .tech-card p { color: var(--text-sub); margin-bottom: 25px; line-height: 1.6; }
-
-        .link-arrow {
-            color: var(--primary);
-            font-weight: 700;
-            letter-spacing: 1px;
-            display: flex; align-items: center;
+        .nav-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            padding: 25px;
+            text-align: left;
+            transition: 0.4s;
+            cursor: pointer;
         }
-        .link-arrow::after { content: '>>'; margin-left: 10px; font-size: 0.8em; transition: 0.3s; }
-        .tech-card:hover .link-arrow::after { margin-left: 15px; }
-
-        /* フッター */
-        footer {
-            background: #020205;
-            padding: 50px;
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            color: var(--text-sub);
-            font-size: 0.9rem;
+        .nav-card:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-5px);
+            border-color: var(--text-gold);
         }
+        .nav-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem; color: var(--text-white); margin-bottom: 10px;
+        }
+        .nav-card p { font-size: 0.8rem; color: #aaa; letter-spacing: 0.05em; }
+        .nav-card .arrow { float: right; color: var(--text-gold); font-size: 1.5rem; }
 
-        /* アニメーション定義 */
-        @keyframes typing { from { width: 0 } to { width: 100% } }
-        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--primary); } }
-
-        /* モバイル対応 */
+        @keyframes pulse { 0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(212, 175, 55, 0.2); } 50% { transform: scale(1.02); box-shadow: 0 0 60px rgba(212, 175, 55, 0.4); } }
+        
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .typewriter { font-size: 1rem; }
+            h1 { font-size: 3rem; }
+            .content-grid { grid-template-columns: 1fr; position: relative; bottom: auto; margin-top: 50px; }
             nav { display: none; }
         }
     </style>
 </head>
 <body>
 
+    <div class="ambient-bg"></div>
+
     <header>
-        <div class="brand">BRIDGE<span>OS</span></div>
+        <div class="brand">BRIDGE CO., LTD.</div>
         <nav>
             <ul>
-                <li><a href="index.html">SYSTEM</a></li>
-                <li><a href="company.html">ABOUT</a></li>
-                <li><a href="services.html">MODULES</a></li>
-                <li><a href="works.html">LOGS</a></li>
-                <li><a href="contact.html">CONNECT</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="company.html">Company</a></li>
+                <li><a href="works.html">Works</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <div class="hero">
-        <div class="ring r1"></div>
-        <div class="ring r2"></div>
-
-        <div class="logo-container">
+        <div class="logo-wrapper">
             <img src="gazou/logo.jpg" alt="BRIDGE Logo" class="logo-img">
         </div>
 
-        <h1>INNOVATION<br>ARCHITECTS</h1>
-        <div class="typewriter">INITIALIZING BRIDGE OS V1.0...</div>
+        <h1>BRIDGE OS</h1>
+        <p class="subtitle">Architecture of the Future</p>
         
-        <br>
-        <a href="contact.html" class="btn-glitch">ACCESS SYSTEM</a>
-    </div>
+        <a href="contact.html" class="btn-luxury">CONTACT US</a>
 
-    <section>
-        <h2 class="section-title">SYSTEM MODULES</h2>
-        <div class="grid-container">
-            <div class="tech-card">
-                <h3>01 / CORE</h3>
-                <p>企業理念とビジョン。私たちが描く未来の設計図。</p>
-                <a href="company.html" class="link-arrow">COMPANY DATA</a>
-            </div>
-
-            <div class="tech-card">
-                <h3>02 / FUNCTIONS</h3>
-                <p>OS開発、AI統合、グローバルソリューション。</p>
-                <a href="services.html" class="link-arrow">VIEW SERVICES</a>
-            </div>
-
-            <div class="tech-card">
-                <h3>03 / HISTORY</h3>
-                <p>開発ログとプロジェクトの実績。</p>
-                <a href="works.html" class="link-arrow">PROJECT LOGS</a>
-            </div>
+        <div class="content-grid">
+            <a href="services.html" class="nav-card">
+                <span class="arrow">→</span>
+                <h3>SERVICES</h3>
+                <p>OS開発 / AIソリューション / DXコンサルティング</p>
+            </a>
+            <a href="works.html" class="nav-card">
+                <span class="arrow">→</span>
+                <h3>WORKS</h3>
+                <p>開発実績 / プロジェクトログ</p>
+            </a>
+            <a href="company.html" class="nav-card">
+                <span class="arrow">→</span>
+                <h3>COMPANY</h3>
+                <p>企業理念 / ビジョン</p>
+            </a>
         </div>
-    </section>
-
-    <footer>
-        <p>EST. 2025 BRIDGE CO., LTD.<br>ALL SYSTEMS OPERATIONAL.</p>
-    </footer>
+    </div>
 
 </body>
 </html>
