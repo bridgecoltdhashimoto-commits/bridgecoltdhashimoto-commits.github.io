@@ -3,119 +3,311 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BRIDGE CO., LTD. | Global Innovation</title>
-    <meta name="description" content="世界をつなぐ架け橋となる。BRIDGE CO., LTD.の公式ウェブサイトです。">
+    <title>BRIDGE OS | Architecting the Future</title>
+    <meta name="description" content="次世代OS「BRIDGE OS」開発。世界を変えるイノベーションをここから。">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&family=Noto+Sans+JP:wght@300;500;700&display=swap" rel="stylesheet">
     
     <style>
-        /* ベーススタイル（共通） */
+        /* --- テック系リセットCSS --- */
         :root {
-            --primary-color: #0f172a; --accent-color: #3b82f6; --text-color: #334155;
-            --bg-light: #f8fafc; --white: #ffffff;
+            --bg-dark: #050510;       /* ほぼ黒に近いネイビー */
+            --bg-panel: #1a1a2e;      /* パネル色 */
+            --primary: #00d4ff;       /* ネオンシアン */
+            --secondary: #e94560;     /* アクセントレッド */
+            --gold: #ffd700;          /* ロゴのゴールドに合わせた色 */
+            --text-main: #ffffff;
+            --text-sub: #a0a0b0;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; background-color: var(--bg-light); }
-        a { text-decoration: none; color: inherit; transition: opacity 0.3s ease; }
-        a:hover { opacity: 0.7; }
 
-        /* ヘッダー（共通） */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Rajdhani', 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(233, 69, 96, 0.1) 0%, transparent 20%);
+        }
+
+        a { text-decoration: none; transition: 0.3s; }
+
+        /* --- ヘッダー --- */
         header {
             position: fixed; width: 100%; top: 0; z-index: 1000;
-            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            background: rgba(5, 5, 16, 0.8);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
             display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 5%; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 15px 5%;
         }
-        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); letter-spacing: 0.05em; }
+
+        .brand {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--text-main);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .brand span { color: var(--primary); }
+
         nav ul { display: flex; list-style: none; gap: 30px; }
-        nav a { font-size: 0.95rem; font-weight: 500; color: var(--primary-color); position: relative; }
-        nav a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: var(--accent-color); transition: width 0.3s; }
-        nav a:hover::after { width: 100%; }
-
-        /* ヒーローセクション（修正部分） */
-        .hero {
-            height: 100vh;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; color: var(--white); padding: 0 20px;
-            /* ロゴを背景に設定し、暗いオーバーレイをかける */
-            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)),
-                        url('gazou/logo.jpg'); /* ロゴ画像のパス */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* パララックス効果 */
+        nav a {
+            color: var(--text-sub);
+            font-weight: 500;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            position: relative;
         }
-        .hero h1 { font-size: 4rem; font-weight: 700; margin-bottom: 20px; letter-spacing: 0.1em; line-height: 1.1; }
-        .hero p { font-size: 1.2rem; max-width: 600px; margin-bottom: 40px; font-weight: 300; opacity: 0.9; }
-        .btn { display: inline-block; padding: 15px 40px; background-color: var(--accent-color); color: var(--white); font-weight: 700; border-radius: 50px; letter-spacing: 0.05em; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4); }
+        nav a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
 
-        /* コンテンツセクション（共通） */
-        section { padding: 100px 5%; }
-        .section-title { font-size: 2.5rem; text-align: center; margin-bottom: 60px; color: var(--primary-color); letter-spacing: 0.05em; }
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
-        .card { background: var(--white); padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease; }
-        .card:hover { transform: translateY(-5px); }
-        .card h3 { font-size: 1.5rem; margin-bottom: 20px; color: var(--primary-color); }
-        .card p { margin-bottom: 30px; color: #64748b; }
-        .card-link { color: var(--accent-color); font-weight: 700; display: inline-flex; align-items: center; }
-        .card-link::after { content: '→'; margin-left: 8px; transition: margin-left 0.3s; }
-        .card-link:hover::after { margin-left: 12px; }
+        /* --- ヒーローセクション（メイン） --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px 50px;
+            position: relative;
+        }
 
-        /* フッター（共通） */
-        footer { background-color: var(--primary-color); color: var(--white); padding: 60px 5%; text-align: center; }
-        footer p { font-size: 0.9rem; opacity: 0.6; margin-top: 20px; }
+        /* ロゴのスタイル：光るコアのような演出 */
+        .logo-container {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* 画像を円形に切り抜き、内側から発光させる */
+        .logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 比率を保ってトリミング */
+            border-radius: 50%;
+            border: 2px solid rgba(255, 215, 0, 0.3); /* ゴールドの枠線 */
+            box-shadow: 
+                0 0 30px rgba(255, 215, 0, 0.2),
+                inset 0 0 20px rgba(0,0,0,0.5);
+            transition: transform 0.5s ease;
+            background: #fff; /* ロゴ画像の透過部分がもしあれば白にする */
+        }
+        
+        .logo-container:hover .logo-img {
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.6);
+        }
+
+        /* 背景のアニメーションリング */
+        .ring {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+            z-index: 1;
+        }
+        .r1 { width: 300px; height: 300px; animation: spin 10s linear infinite; border-color: rgba(0, 212, 255, 0.2); border-style: dashed;}
+        .r2 { width: 450px; height: 450px; animation: spin 20s linear infinite reverse; border-color: rgba(233, 69, 96, 0.2); }
+
+        @keyframes spin { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+
+        /* テキスト演出 */
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            line-height: 1;
+            margin-bottom: 20px;
+            z-index: 10;
+            background: linear-gradient(to right, #fff, #b0b0b0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .typewriter {
+            font-family: 'Share Tech Mono', monospace; /* なければ等幅フォント */
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 40px;
+            border-right: 2px solid var(--primary);
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite;
+            z-index: 10;
+        }
+
+        /* ボタン */
+        .btn-glitch {
+            padding: 15px 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--bg-dark);
+            background: var(--primary);
+            border: none;
+            clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+            cursor: pointer;
+            position: relative;
+            z-index: 10;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+        .btn-glitch:hover {
+            background: var(--white);
+            box-shadow: 0 0 30px var(--primary);
+            color: var(--primary);
+        }
+
+        /* --- グリッドメニュー（アプリランチャー風） --- */
+        section { padding: 100px 5%; position: relative; z-index: 5; }
+        
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--text-main);
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tech-card {
+            background: rgba(26, 26, 46, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--primary);
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            border-color: var(--primary);
+        }
+        .tech-card:hover::before { opacity: 1; }
+
+        .tech-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+        
+        .tech-card p { color: var(--text-sub); margin-bottom: 25px; line-height: 1.6; }
+
+        .link-arrow {
+            color: var(--primary);
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex; align-items: center;
+        }
+        .link-arrow::after { content: '>>'; margin-left: 10px; font-size: 0.8em; transition: 0.3s; }
+        .tech-card:hover .link-arrow::after { margin-left: 15px; }
+
+        /* フッター */
+        footer {
+            background: #020205;
+            padding: 50px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-sub);
+            font-size: 0.9rem;
+        }
+
+        /* アニメーション定義 */
+        @keyframes typing { from { width: 0 } to { width: 100% } }
+        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--primary); } }
 
         /* モバイル対応 */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
-            nav { display: none; } /* 簡易非表示 */
+            .typewriter { font-size: 1rem; }
+            nav { display: none; }
         }
     </style>
 </head>
 <body>
+
     <header>
-        <div class="logo">BRIDGE CO., LTD.</div>
+        <div class="brand">BRIDGE<span>OS</span></div>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="company.html">Company</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="works.html">Works</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html">SYSTEM</a></li>
+                <li><a href="company.html">ABOUT</a></li>
+                <li><a href="services.html">MODULES</a></li>
+                <li><a href="works.html">LOGS</a></li>
+                <li><a href="contact.html">CONNECT</a></li>
             </ul>
         </nav>
     </header>
 
     <div class="hero">
-        <h1>CONNECTING<br>THE WORLD</h1>
-        <p>テクノロジーと感性の融合で、新しい価値を創造する。<br>次世代のOS開発から、グローバルなビジネスソリューションまで。</p>
-        <a href="contact.html" class="btn">お問い合わせ</a>
+        <div class="ring r1"></div>
+        <div class="ring r2"></div>
+
+        <div class="logo-container">
+            <img src="gazou/logo.jpg" alt="BRIDGE Logo" class="logo-img">
+        </div>
+
+        <h1>INNOVATION<br>ARCHITECTS</h1>
+        <div class="typewriter">INITIALIZING BRIDGE OS V1.0...</div>
+        
+        <br>
+        <a href="contact.html" class="btn-glitch">ACCESS SYSTEM</a>
     </div>
 
     <section>
-        <h2 class="section-title">Explore Our World</h2>
+        <h2 class="section-title">SYSTEM MODULES</h2>
         <div class="grid-container">
-            <div class="card">
-                <h3>Company</h3>
-                <p>私たちのビジョン、ミッション、そして会社概要についてご紹介します。</p>
-                <a href="company.html" class="card-link">企業情報を見る</a>
+            <div class="tech-card">
+                <h3>01 / CORE</h3>
+                <p>企業理念とビジョン。私たちが描く未来の設計図。</p>
+                <a href="company.html" class="link-arrow">COMPANY DATA</a>
             </div>
-            <div class="card">
-                <h3>Services</h3>
-                <p>BRIDGE OSをはじめとする、革新的なプロダクトとサービスのご案内。</p>
-                <a href="services.html" class="card-link">サービス詳細</a>
+
+            <div class="tech-card">
+                <h3>02 / FUNCTIONS</h3>
+                <p>OS開発、AI統合、グローバルソリューション。</p>
+                <a href="services.html" class="link-arrow">VIEW SERVICES</a>
             </div>
-            <div class="card">
-                <h3>Works</h3>
-                <p>これまでの実績、プロジェクト、そして私たちの挑戦の軌跡。</p>
-                <a href="works.html" class="card-link">実績紹介</a>
+
+            <div class="tech-card">
+                <h3>03 / HISTORY</h3>
+                <p>開発ログとプロジェクトの実績。</p>
+                <a href="works.html" class="link-arrow">PROJECT LOGS</a>
             </div>
         </div>
     </section>
 
-    footer>
-        <div class="logo">BRIDGE CO., LTD.</div>
-        <p>&copy; 2025 BRIDGE CO., LTD. All Rights Reserved.</p>
+    <footer>
+        <p>EST. 2025 BRIDGE CO., LTD.<br>ALL SYSTEMS OPERATIONAL.</p>
     </footer>
+
 </body>
 </html>
