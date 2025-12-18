@@ -3,203 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lounge 珊瑚礁 | 藤井寺の隠れ家</title>
-    <meta name="description" content="藤井寺の深海に佇む、海の宝石。洗練された大人のためのラウンジ珊瑚礁。心安らぐ静寂とおもてなしを。">
+    <title>Bridge Co., Ltd.</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Shippori+Mincho:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Sans+JP:wght@300;500&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-deep: #02050a;
-            --gold-main: #d4af37;
-            --gold-light: #e6c585;
-            --text-silver: #d1d9e0;
-            --glass-card: rgba(255, 255, 255, 0.02);
-            --border-gold: rgba(212, 175, 55, 0.25);
-        }
-
+        :root { --accent: #d4af37; --bg: #0a0a0a; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Shippori Mincho', serif;
-            background-color: var(--bg-deep); color: #fff;
-            background-image: radial-gradient(circle at 50% 30%, #0a1324 0%, #000 100%);
-            min-height: 100vh; overflow-x: hidden;
-            line-height: 1.8;
-        }
-
-        /* --- 浮遊する光の粒子 --- */
-        .ocean-bg { position: fixed; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
-        .particle {
-            position: absolute; border-radius: 50%;
-            background: radial-gradient(circle, rgba(230,197,133,0.3) 0%, transparent 70%);
-            animation: float linear infinite; opacity: 0;
-        }
-        @keyframes float {
-            0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
-            20% { opacity: 0.6; }
-            80% { opacity: 0.6; }
-            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
-        }
-
-        /* --- スマートヘッダー --- */
-        header {
-            position: fixed; width: 100%; top: 0; z-index: 1000;
-            padding: 25px 5%; display: flex; justify-content: space-between; align-items: center;
-            background: linear-gradient(to bottom, rgba(2,5,10,0.95), transparent);
-            border-bottom: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px);
-        }
-        .brand { font-family: 'Cinzel', serif; font-size: 1.5rem; letter-spacing: 0.15em; color: var(--gold-light); text-decoration: none; }
-        .brand span { font-size: 0.9rem; color: #fff; margin-left: 10px; font-family: 'Shippori Mincho', serif; }
-        nav { display: flex; gap: 30px; }
-        nav a { color: #aaa; text-decoration: none; font-size: 0.8rem; letter-spacing: 0.1em; transition: 0.4s; text-transform: uppercase; }
-        nav a:hover, nav a.active { color: var(--gold-light); text-shadow: 0 0 10px var(--gold-main); }
-
-        /* --- スクロールアニメーション用設定 --- */
-        .reveal { opacity: 0; transform: translateY(40px); transition: 1.5s all ease; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        /* --- ヒーロー --- */
-        .hero {
-            height: 100vh; display: flex; flex-direction: column; justify-content: center;
-            align-items: center; text-align: center; padding: 0 5%;
-        }
-        .hero h1 {
-            font-family: 'Cinzel', serif; font-size: clamp(2rem, 5vw, 4rem);
-            letter-spacing: 0.3em; color: var(--gold-light); margin-bottom: 20px;
-            font-weight: 400; text-shadow: 0 0 30px rgba(212,175,55,0.3);
-        }
-        .hero-sub { font-size: 1.1rem; letter-spacing: 0.5em; color: var(--text-silver); margin-bottom: 40px; }
-
-        /* --- セクション --- */
-        section { padding: 150px 5%; max-width: 1000px; margin: 0 auto; text-align: center; }
-        .sec-title { font-family: 'Cinzel', serif; font-size: 2rem; color: var(--gold-light); letter-spacing: 0.2em; margin-bottom: 80px; position: relative; }
-        .sec-title::after { content: ''; position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); width: 40px; height: 1px; background: var(--gold-main); }
-
-        .luxury-card {
-            background: var(--glass-card); border: 1px solid var(--border-gold);
-            padding: 80px 40px; position: relative; overflow: hidden; transition: 0.6s;
-        }
-        .luxury-card:hover { border-color: var(--gold-light); box-shadow: 0 0 50px rgba(212,175,55,0.1); }
-        .luxury-card p { font-size: 1.05rem; color: var(--text-silver); line-height: 2.5; letter-spacing: 0.05em; }
-
-        .price-text { font-family: 'Cinzel', serif; font-size: 3rem; color: var(--gold-light); margin: 40px 0; }
-        
-        .btn-gold {
-            display: inline-block; padding: 18px 60px; border: 1px solid var(--gold-light);
-            color: var(--gold-light); text-decoration: none; font-size: 0.9rem;
-            letter-spacing: 0.2em; transition: 0.4s; background: transparent;
-        }
-        .btn-gold:hover { background: var(--gold-light); color: #000; box-shadow: 0 0 30px var(--gold-light); }
-
-        /* --- 予約ボタン --- */
-        .fixed-reserve {
-            position: fixed; bottom: 30px; right: 30px; z-index: 900;
-            background: var(--gold-main); color: #000; padding: 15px 40px;
-            border-radius: 2px; text-decoration: none; font-family: 'Cinzel', serif;
-            font-weight: bold; letter-spacing: 0.2em; transition: 0.4s;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-        .fixed-reserve:hover { background: var(--gold-light); transform: translateY(-5px); }
-
-        footer { padding: 100px 5%; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); color: #555; font-size: 0.7rem; letter-spacing: 0.2em; font-family: 'Cinzel', serif; }
-
-        @media (max-width: 768px) {
-            header { flex-direction: column; gap: 15px; padding: 15px; }
-            nav { gap: 15px; }
-            .hero h1 { font-size: 1.8rem; letter-spacing: 0.2em; }
-            .hero-sub { font-size: 0.8rem; letter-spacing: 0.3em; }
-            section { padding: 100px 5%; }
-            .luxury-card { padding: 50px 20px; }
-        }
+        body { background: var(--bg); color: #fff; font-family: 'Noto Sans JP', sans-serif; line-height: 1.6; overflow-x: hidden; }
+        header { position: fixed; width: 100%; padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .logo { font-family: 'Cinzel', serif; font-size: 1.5rem; letter-spacing: 0.1em; color: var(--accent); text-decoration: none; }
+        nav a { color: #fff; text-decoration: none; margin-left: 30px; font-size: 0.85rem; letter-spacing: 0.1em; transition: 0.3s; }
+        nav a:hover { color: var(--accent); }
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 5%; }
+        .hero h1 { font-family: 'Cinzel', serif; font-size: 4rem; letter-spacing: 0.2em; margin-bottom: 20px; }
+        .hero p { font-size: 1.2rem; letter-spacing: 0.3em; color: #888; }
+        .container { padding: 100px 5%; max-width: 1200px; margin: 0 auto; text-align: center; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-top: 60px; }
+        .card { padding: 40px; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; text-decoration: none; color: inherit; }
+        .card:hover { border-color: var(--accent); background: rgba(212,175,55,0.05); }
+        .card h3 { font-family: 'Cinzel', serif; color: var(--accent); margin-bottom: 15px; }
+        footer { padding: 50px; text-align: center; color: #444; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05); }
+        @media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } header { flex-direction: column; gap: 20px; } nav a { margin: 0 10px; } }
     </style>
 </head>
 <body>
-
-    <div class="ocean-bg" id="ocean"></div>
-
     <header>
-        <a href="index.html" class="brand">LOUNGE <span>珊瑚礁</span></a>
+        <a href="index.html" class="logo">BRIDGE</a>
         <nav>
-            <a href="index.html" class="active">Home</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="recruit.html">Recruit</a>
+            <a href="company.html">COMPANY</a>
+            <a href="services.html">SERVICES</a>
+            <a href="works.html">WORKS</a>
+            <a href="contact.html">CONTACT</a>
         </nav>
     </header>
-
-    <div class="hero reveal">
-        <h1>JEWEL OF THE SEA</h1>
-        <p class="hero-sub">深海に沈む、静寂の隠れ家。</p>
-        <p style="color: #888; font-size: 0.9rem; letter-spacing: 0.2em;">SINCE 2025</p>
+    <div class="hero">
+        <h1>INNOVATION</h1>
+        <p>Bridging the Future.</p>
     </div>
-
-    <section class="reveal">
-        <h2 class="sec-title">CONCEPT</h2>
-        <div class="luxury-card">
-            <p>
-                扉を開ければ、そこは日常の喧騒を離れた別世界。<br>
-                海の宝石「珊瑚礁」のように、<br>
-                幻想的な光と安らぎがあなたを包み込みます。
-            </p>
-            <p style="margin-top: 30px;">
-                洗練された大人のための、特別なサードプレイス。<br>
-                心ほどける、優雅なひとときをお愉しみください。
-            </p>
+    <div class="container">
+        <div class="grid">
+            <a href="company.html" class="card"><h3>COMPANY</h3><p>私たちについて</p></a>
+            <a href="services.html" class="card"><h3>SERVICES</h3><p>事業内容</p></a>
+            <a href="works.html" class="card"><h3>WORKS</h3><p>実績紹介</p></a>
         </div>
-    </section>
-
-    <section class="reveal">
-        <h2 class="sec-title">SYSTEM</h2>
-        <div class="luxury-card">
-            <p>ご満足をお約束する、明朗な料金体系</p>
-            <div class="price-text">SET ￥5,000</div>
-            <p style="font-size: 0.9rem;">
-                OPEN 20:30 - CLOSE 25:00<br>
-                CLOSED / SUNDAY, HOLIDAY
-            </p>
-        </div>
-    </section>
-
-    <section class="reveal" style="margin-bottom: 100px;">
-        <h2 class="sec-title">ACCESS</h2>
-        <div class="luxury-card">
-            <p style="font-size: 1.2rem; color: #fff; margin-bottom: 10px;">大阪府藤井寺市野中1-262-5</p>
-            <p style="color: var(--gold-light); font-size: 0.9rem; margin-bottom: 30px;">※専属ドライバーによる送迎を承っております</p>
-            <a href="http://googleusercontent.com/maps.google.com/?q=大阪府藤井寺市野中1-262-5" target="_blank" class="btn-gold">GOOGLE MAPS</a>
-        </div>
-    </section>
-
-    <footer><p>&copy; 2025 LOUNGE SANGOSHO. ALL RIGHTS RESERVED.</p></footer>
-
-    <a href="tel:08079927937" class="fixed-reserve">RESERVE</a>
-
-    <script>
-        /* 光の粒子生成 */
-        const ocean = document.getElementById('ocean');
-        for (let i = 0; i < 15; i++) {
-            const p = document.createElement('div');
-            p.className = 'particle';
-            const size = Math.random() * 15 + 5 + 'px';
-            p.style.width = size; p.style.height = size;
-            p.style.left = Math.random() * 100 + '%';
-            p.style.animationDuration = Math.random() * 10 + 10 + 's';
-            p.style.animationDelay = Math.random() * 5 + 's';
-            ocean.appendChild(p);
-        }
-
-        /* スクロールアニメーション制御 */
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        window.addEventListener("load", reveal);
-    </script>
+    </div>
+    <footer>&copy; 2025 BRIDGE CO., LTD.</footer>
 </body>
 </html>
