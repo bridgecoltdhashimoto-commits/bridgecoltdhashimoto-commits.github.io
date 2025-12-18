@@ -3,175 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BRIDGE CO., LTD. | 次世代OSとAIの融合</title>
+    <title>BRIDGE CO., LTD. | 次世代OS・AI基盤開発</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Sans+JP:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Shippori+Mincho:wght@400;600&family=Noto+Sans+JP:wght@300;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --accent: #d4af37; /* 格式高いゴールド */
-            --bg-dark: #050505;
-            --tech-blue: #0a192f;
-            --glass: rgba(255, 255, 255, 0.03);
+            --accent-gold: #d4af37; /* 既存ページ共通ゴールド */
+            --bg-base: #020202;
+            --glass-white: rgba(255, 255, 255, 0.03);
+            --border-muted: rgba(212, 175, 55, 0.2);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { width: 100%; overflow-x: hidden; background-color: var(--bg-base); color: #fff; }
+
         body {
-            background-color: var(--bg-dark);
-            color: #fff;
-            font-family: 'Noto Sans JP', sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
+            font-family: 'Noto Sans JP', 'Shippori Mincho', serif;
+            line-height: 1.8;
+            /* 背景：回路図モチーフを透かしで配置 */
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(10, 25, 47, 0.5) 0%, transparent 100%),
+                url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
         }
 
-        /* --- 背景：ITを象徴するデジタル・パーティクル --- */
-        #tech-canvas {
+        /* --- IT重厚演出：バックグラウンド・サーキット --- */
+        .tech-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            background: radial-gradient(circle at center, #0d1b2a 0%, #050505 100%);
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
+                        url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover; background-position: center;
+            opacity: 0.15; z-index: -1;
         }
 
-        /* --- ヘッダー --- */
+        /* --- ヘッダー：他ページと完全統一 --- */
         header {
-            position: fixed; width: 100%; padding: 25px 5%;
-            display: flex; justify-content: space-between; align-items: center;
-            background: rgba(0,0,0,0.8); backdrop-filter: blur(15px);
-            z-index: 1000; border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+            padding: 30px 5%; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
         .logo {
-            font-family: 'Cinzel', serif; font-size: 1.8rem; letter-spacing: 0.2em;
-            color: var(--accent); text-decoration: none; font-weight: 700;
+            font-family: 'Cinzel', serif; font-size: 1.6rem; letter-spacing: 0.15em;
+            color: var(--accent-gold); text-decoration: none; font-weight: 700;
         }
-        nav { display: flex; gap: 30px; }
+        nav { display: flex; gap: 35px; }
         nav a {
             color: #fff; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.15em;
-            transition: 0.4s; position: relative; font-weight: 500;
+            transition: 0.4s; font-family: 'Cinzel', serif; position: relative;
         }
+        nav a:hover, nav a.active { color: var(--accent-gold); }
         nav a::after {
             content: ''; position: absolute; bottom: -5px; left: 0; width: 0;
-            height: 1px; background: var(--accent); transition: 0.4s;
+            height: 1px; background: var(--accent-gold); transition: 0.4s;
         }
         nav a:hover::after { width: 100%; }
-        nav a:hover { color: var(--accent); }
 
-        /* --- ヒーローセクション：圧倒的インパクト --- */
+        /* --- ヒーローセクション：OS開発の頂点 --- */
         .hero {
-            height: 100vh; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; text-align: center;
-            padding: 0 5%; position: relative;
+            height: 100vh; display: flex; flex-direction: column; justify-content: center;
+            align-items: center; text-align: center; padding: 0 5%;
         }
-        .hero-title {
+        .hero-label {
+            font-family: 'Cinzel', serif; color: var(--accent-gold);
+            letter-spacing: 0.6em; font-size: 0.9rem; margin-bottom: 25px;
+            opacity: 0; transform: translateY(20px); animation: fadeInUp 1s forwards;
+        }
+        .hero h1 {
             font-family: 'Cinzel', serif; font-size: clamp(2.5rem, 8vw, 6rem);
-            letter-spacing: 0.4em; color: #fff; margin-bottom: 20px;
-            text-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
-            animation: fadeInOut 4s infinite alternate;
+            letter-spacing: 0.25em; margin-bottom: 20px; font-weight: 400;
+            text-shadow: 0 0 50px rgba(212, 175, 55, 0.25);
+            opacity: 0; transform: translateY(20px); animation: fadeInUp 1s forwards 0.3s;
         }
-        @keyframes fadeInOut {
-            0% { opacity: 0.8; transform: scale(1); }
-            100% { opacity: 1; transform: scale(1.02); }
-        }
-        .hero-lead {
-            font-size: 1.2rem; letter-spacing: 0.5em; color: var(--accent);
-            margin-bottom: 40px; font-weight: 300;
+        .hero p {
+            font-size: 1.1rem; letter-spacing: 0.4em; color: #888;
+            opacity: 0; transform: translateY(20px); animation: fadeInUp 1s forwards 0.6s;
         }
 
         /* --- スクロールアニメーション用 --- */
-        .reveal { opacity: 0; transform: translateY(50px); transition: 1.5s all ease; }
+        .reveal { opacity: 0; transform: translateY(40px); transition: 1.5s all ease; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* --- コアテクノロジー（OS/AI） --- */
-        .section-container { padding: 120px 5%; max-width: 1200px; margin: 0 auto; text-align: center; }
-        .sec-label { font-family: 'Cinzel', serif; color: var(--accent); letter-spacing: 0.3em; display: block; margin-bottom: 10px; }
-        .sec-title { font-size: 2.5rem; margin-bottom: 60px; font-weight: 700; letter-spacing: 0.1em; }
+        /* --- セクション：OS Core --- */
+        section { padding: 150px 5%; max-width: 1200px; margin: 0 auto; text-align: center; }
+        .sec-title {
+            font-family: 'Cinzel', serif; font-size: 2.5rem; color: var(--accent-gold);
+            letter-spacing: 0.3em; margin-bottom: 10px; font-weight: 400;
+        }
+        .sec-sub { font-size: 0.9rem; color: #666; letter-spacing: 0.2em; margin-bottom: 80px; display: block; }
 
-        .feature-grid {
+        /* カード：SERVICESページと統一 */
+        .grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 40px; margin-top: 40px;
         }
-        .feature-card {
-            background: var(--glass); border: 1px solid rgba(212, 175, 55, 0.15);
-            padding: 60px 40px; text-align: left; transition: 0.5s;
+        .card {
+            background: var(--glass-white); border: 1px solid var(--border-muted);
+            padding: 60px 40px; text-align: left; transition: 0.6s;
             position: relative; overflow: hidden;
         }
-        .feature-card::before {
-            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            transform: translateX(-100%); transition: 0.5s;
+        .card::before {
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            transform: translateX(-100%); transition: 0.8s;
         }
-        .feature-card:hover::before { transform: translateX(100%); }
-        .feature-card:hover {
-            background: rgba(212, 175, 55, 0.05); transform: translateY(-10px);
-            border-color: var(--accent);
+        .card:hover::before { transform: translateX(100%); }
+        .card:hover {
+            border-color: var(--accent-gold); background: rgba(212, 175, 55, 0.05);
+            transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.6);
         }
-        .feature-card h3 {
-            font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--accent);
-            margin-bottom: 20px; letter-spacing: 0.1em;
-        }
-        .feature-card p { color: #ccc; font-weight: 300; line-height: 2; }
+        .card-num { font-family: 'Cinzel', serif; color: var(--accent-gold); font-size: 1.5rem; margin-bottom: 25px; display: block; }
+        .card h3 { font-family: 'Cinzel', serif; font-size: 1.4rem; color: #fff; margin-bottom: 20px; letter-spacing: 0.1em; }
+        .card p { color: #aaa; font-weight: 300; line-height: 2; font-size: 0.95rem; }
 
-        /* --- リンクボタン --- */
+        /* --- CTAボタン --- */
         .cta-btn {
-            display: inline-block; padding: 20px 60px; border: 1px solid var(--accent);
-            color: var(--accent); text-decoration: none; font-size: 0.9rem;
-            letter-spacing: 0.3em; margin-top: 50px; transition: 0.4s;
-            font-family: 'Cinzel', serif; font-weight: 700;
+            display: inline-block; padding: 20px 70px; border: 1px solid var(--accent-gold);
+            color: var(--accent-gold); text-decoration: none; font-size: 0.9rem;
+            letter-spacing: 0.4em; margin-top: 60px; transition: 0.4s;
+            font-family: 'Cinzel', serif; font-weight: 700; background: transparent;
         }
-        .cta-btn:hover { background: var(--accent); color: #000; box-shadow: 0 0 30px var(--accent); }
+        .cta-btn:hover { background: var(--accent-gold); color: #000; box-shadow: 0 0 30px var(--accent-gold); }
 
         footer {
-            padding: 80px 5%; text-align: center; border-top: 1px solid rgba(255,255,255,0.05);
-            color: #666; font-size: 0.75rem; letter-spacing: 0.2em; font-family: 'Cinzel', serif;
+            padding: 100px 5%; text-align: center; border-top: 1px solid rgba(255,255,255,0.05);
+            color: #444; font-size: 0.75rem; letter-spacing: 0.2em; font-family: 'Cinzel', serif;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @media (max-width: 950px) {
             header { flex-direction: column; gap: 20px; padding: 20px; }
-            .hero-title { font-size: 2.2rem; letter-spacing: 0.2em; }
-            .hero-lead { font-size: 0.9rem; letter-spacing: 0.2em; }
-            .feature-grid { grid-template-columns: 1fr; }
+            nav { gap: 15px; flex-wrap: wrap; justify-content: center; }
+            .hero h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <div id="tech-canvas"></div>
+    <div class="tech-overlay"></div>
 
     <header>
-        <a href="index.html" class="logo">BRIDGE</a>
+        <a href="index.html" class="logo">BRIDGE CO., LTD.</a>
         <nav>
-            <a href="company.html">COMPANY</a>
+            <a href="index.html" class="active">HOME</a>
             <a href="services.html">SERVICES</a>
+            <a href="company.html">COMPANY</a>
             <a href="works.html">WORKS</a>
             <a href="contact.html">CONTACT</a>
         </nav>
     </header>
 
-    <div class="hero reveal">
-        <span class="hero-lead">REDEFINING THE DIGITAL FRONTIER</span>
-        <h1 class="hero-title">INNOVATION</h1>
-        <p style="color: #888; letter-spacing: 0.4em;">BRIDGE THE FUTURE WITH NEXT-GEN OS</p>
+    <div class="hero">
+        <span class="hero-label">NEXT GENERATION CORE SYSTEM</span>
+        <h1>INNOVATION</h1>
+        <p>REDEFINING THE FUTURE WITH BRIDGE OS</p>
     </div>
 
-    <div class="section-container">
-        <span class="sec-label reveal">OUR CORE COMPETENCE</span>
-        <h2 class="sec-title reveal">次世代オペレーティングシステム</h2>
+    <section>
+        <span class="sec-sub reveal">CORE TECHNOLOGY</span>
+        <h2 class="sec-title reveal">至高のシステム基盤</h2>
         
-        <div class="feature-grid">
-            <div class="feature-card reveal">
+        <div class="grid">
+            <div class="card reveal">
+                <span class="card-num">01</span>
                 <h3>BRIDGE OS</h3>
-                <p>極限まで軽量化・最適化された次世代カーネル。あらゆるハードウェアの潜在能力を引き出し、セキュアで高速なデジタル基盤を提供します。</p>
+                <p>極限まで軽量化・最適化された次世代カーネル。あらゆるハードウェアの潜在能力を100%引き出し、強固なセキュリティと驚異的な処理速度を両立させます。</p>
             </div>
-            <div class="feature-card reveal">
-                <h3>AI INTEGRETION</h3>
-                <p>GeminiやOpenAIの最新エンジンをOSレベルで統合。ユーザーの意図を汲み取り、業務効率を劇的に進化させる知能化システムを構築します。</p>
+            <div class="card reveal">
+                <span class="card-num">02</span>
+                <h3>AI INTEGRATION</h3>
+                <p>Geminiおよび最新のLLMをOSレベルで統合。ユーザーの意図を自律的に理解し、業務フローを劇的に知能化する、思考するオペレーティングシステムを構築します。</p>
             </div>
-            <div class="feature-card reveal">
+            <div class="card reveal">
+                <span class="card-num">03</span>
                 <h3>CLOUD NATIVE</h3>
-                <p>スケーラブルで堅牢なクラウドインフラ設計。グローバルなビジネス展開を支える、停止することのない強靭なネットワーク環境を構築します。</p>
+                <p>スケーラブルかつ堅牢なクラウドインフラの設計・構築。グローバルなビジネス展開を支え、停止することのない強靭なネットワーク基盤を提供します。</p>
             </div>
         </div>
 
-        <a href="services.html" class="cta-btn reveal">VIEW SERVICES</a>
-    </div>
+        <a href="services.html" class="cta-btn reveal">OUR SERVICES</a>
+    </section>
 
     <footer>
         &copy; 2025 BRIDGE CO., LTD. ALL RIGHTS RESERVED.
@@ -184,7 +199,7 @@
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
+                var elementVisible = 100;
                 if (elementTop < windowHeight - elementVisible) {
                     reveals[i].classList.add("active");
                 }
