@@ -2,180 +2,158 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services | BRIDGE CO., LTD.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>OUR SERVICES | BRIDGE CO., LTD.</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;500;700&family=Zen+Old+Mincho:wght@400;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-deep: #050505;
-            --text-gold: #D4AF37;
-            --text-white: #ffffff;
-            --card-bg: rgba(20, 20, 25, 0.6);
-            --gold-gradient: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            --accent-gold: #d4af37;
+            --gold-gradient: linear-gradient(72deg, #fbf5b7 0%, #aa771c 22%, #fbf5b7 45%, #aa771c 50%, #fbf5b7 55%, #aa771c 78%, #fbf5b7 100%);
+            --bg-base: #020202;
+            --border-muted: rgba(212, 175, 55, 0.25);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { width: 100%; overflow-x: hidden; background-color: var(--bg-base); color: #fff; }
 
         body {
-            font-family: 'Montserrat', 'Zen Old Mincho', sans-serif;
-            background-color: var(--bg-deep);
-            color: var(--text-white);
-            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop'); /* 背景に宇宙・ネットワークイメージ */
-            background-size: cover;
-            background-attachment: fixed;
-            min-height: 100vh;
+            font-family: 'Noto Sans JP', 'Shippori Mincho', serif;
+            line-height: 1.8;
+            background-image: radial-gradient(circle at 50% 10%, #0d1629 0%, #000 100%);
         }
 
+        /* IT背景演出 */
+        .tech-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
+                        url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover; background-position: center;
+            opacity: 0.1; filter: contrast(1.2);
+        }
+
+        /* ヘッダー：最高級ゴールドロゴに修正 */
         header {
             position: fixed; width: 100%; top: 0; z-index: 1000;
-            padding: 30px 5%;
-            display: flex; justify-content: space-between; align-items: center;
-            background: rgba(0,0,0,0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 25px 5%; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(0, 0, 0, 0.9); border-bottom: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px);
         }
+        .logo {
+            font-family: 'Cinzel', serif; font-size: clamp(1.1rem, 1.8vw, 1.6rem); letter-spacing: 0.15em;
+            text-decoration: none; font-weight: 700;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+            white-space: nowrap;
+        }
+        nav { display: flex; gap: clamp(15px, 2.5vw, 35px); }
+        nav a { color: #888; text-decoration: none; font-size: 0.8rem; letter-spacing: 0.15em; transition: 0.4s; font-family: 'Cinzel', serif; }
+        nav a:hover, nav a.active { color: var(--accent-gold); }
+        nav a.active { border-bottom: 1px solid var(--accent-gold); }
 
-        .brand {
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem; color: var(--text-white); letter-spacing: 0.1em;
-        }
+        .container { padding: 150px 5% 100px; max-width: 1200px; margin: 0 auto; text-align: center; }
+        
+        .page-label { font-family: 'Cinzel', serif; color: var(--accent-gold); letter-spacing: 0.5em; font-size: 0.9rem; margin-bottom: 20px; display: block; }
+        h1 { font-family: 'Cinzel', serif; font-size: clamp(2rem, 4vw, 3rem); color: #fff; letter-spacing: 0.3em; margin-bottom: 20px; }
+        .hero-lead { color: #888; font-size: 0.95rem; letter-spacing: 0.1em; margin-bottom: 80px; line-height: 2; }
 
-        nav ul { display: flex; gap: 30px; list-style: none; }
-        nav a { color: #aaa; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
-        nav a:hover { color: var(--text-gold); }
+        /* スクロールアニメーション */
+        .reveal { opacity: 0; transform: translateY(30px); transition: 1.5s all ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-        .container {
-            padding: 150px 5% 100px;
-            max-width: 1400px;
-            margin: 0 auto;
+        /* サービスグリッド（はみ出し防止） */
+        .grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+            gap: 30px; width: 100%;
         }
+        .card {
+            background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-muted);
+            padding: 50px 40px; text-align: left; transition: 0.6s;
+        }
+        .card:hover { border-color: var(--accent-gold); transform: translateY(-10px); background: rgba(212, 175, 55, 0.05); box-shadow: 0 20px 50px rgba(0,0,0,0.7); }
+        
+        .card-num { font-family: 'Cinzel', serif; color: var(--accent-gold); font-size: 1.4rem; margin-bottom: 20px; display: block; }
+        .card h3 { font-family: 'Cinzel', serif; font-size: 1.3rem; margin-bottom: 20px; letter-spacing: 0.1em; color: #fff; }
+        .card p { font-size: 0.9rem; color: #bbb; line-height: 2; }
 
-        .page-title {
-            text-align: center; margin-bottom: 80px;
-        }
-        .page-title h1 {
-            font-family: 'Cinzel', serif; font-size: 3rem; margin-bottom: 10px;
-            background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .page-title p { color: #ccc; letter-spacing: 0.1em; }
+        footer { padding: 100px 5%; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); color: #555; font-size: 0.75rem; letter-spacing: 0.25em; font-family: 'Cinzel', serif; }
 
-        /* サービスカードグリッド */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-        }
-
-        .service-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 50px 30px;
-            border-radius: 4px;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 2px; height: 0;
-            background: var(--text-gold); transition: 0.4s;
-        }
-        .service-card:hover {
-            transform: translateY(-10px);
-            background: rgba(30, 30, 40, 0.8);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-        .service-card:hover::before { height: 100%; }
-
-        .icon {
-            font-size: 2.5rem; color: var(--text-gold); margin-bottom: 25px; display: block;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem; margin-bottom: 15px; font-weight: 500; letter-spacing: 0.05em;
-        }
-
-        .service-card p {
-            font-size: 0.95rem; color: #bbb; line-height: 1.8;
-        }
-
-        /* フッター */
-        footer {
-            text-align: center; padding: 50px; border-top: 1px solid rgba(255,255,255,0.05); color: #555;
-        }
-
-        @media (max-width: 768px) {
-            nav { display: none; }
-            .page-title h1 { font-size: 2rem; }
+        @media (max-width: 950px) {
+            header { flex-direction: column; gap: 15px; padding: 15px; }
+            nav { gap: 15px; }
+            .container { padding-top: 150px; }
+            .card { padding: 40px 25px; }
         }
     </style>
 </head>
 <body>
 
+    <div class="tech-bg"></div>
+
     <header>
-        <div class="brand">BRIDGE CO., LTD.</div>
+        <a href="index.html" class="logo">BRIDGE CO., LTD.</a>
         <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="company.html">Company</a></li>
-                <li><a href="works.html">Works</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
+            <a href="index.html">HOME</a>
+            <a href="services.html" class="active">SERVICES</a>
+            <a href="company.html">COMPANY</a>
+            <a href="works.html">WORKS</a>
+            <a href="contact.html">CONTACT</a>
         </nav>
     </header>
 
     <div class="container">
-        <div class="page-title">
-            <h1>OUR SERVICES</h1>
-            <p>革新的なテクノロジーで、ビジネスと社会をアップデートする。</p>
-        </div>
+        <span class="page-label reveal">OUR SERVICES</span>
+        <h1 class="reveal">OUR BUSINESS</h1>
+        <p class="hero-lead reveal">革新的なテクノロジーで、ビジネスと社会をアップデートする。</p>
 
-        <div class="services-grid">
-            <div class="service-card">
-                <span class="icon">01</span>
+        <div class="grid">
+            <div class="card reveal">
+                <span class="card-num">01</span>
                 <h3>BRIDGE OS Development</h3>
                 <p>Googleのオープンソース技術をベースに、極限まで軽量化・最適化された次世代オペレーティングシステムの開発。低コストかつ高性能な環境を提供します。</p>
             </div>
-
-            <div class="service-card">
-                <span class="icon">02</span>
+            <div class="card reveal">
+                <span class="card-num">02</span>
                 <h3>AI Integration</h3>
                 <p>Gemini APIおよびOpenAI APIを活用した高度なAIソリューションの統合。業務プロセスの自動化、データ分析、顧客体験の向上を実現します。</p>
             </div>
-
-            <div class="service-card">
-                <span class="icon">03</span>
+            <div class="card reveal">
+                <span class="card-num">03</span>
                 <h3>Cloud Architecture</h3>
                 <p>スケーラブルで堅牢なクラウドインフラの設計・構築。グローバルなビジネス展開を支える、安全かつ高速なネットワーク環境を提供します。</p>
             </div>
-
-            <div class="service-card">
-                <span class="icon">04</span>
+            <div class="card reveal">
+                <span class="card-num">04</span>
                 <h3>UI/UX Design</h3>
-                <p>機能性と美しさを兼ね備えたインターフェースデザイン。ユーザーの直感に訴えかける、没入感のあるデジタル体験を創出します。</p>
+                <p>機能性と美しさを兼ね備えたインターフェースデザイン。ユーザーの直感に訴えかける、ストレスフリーなデジタル体験を設計します。</p>
             </div>
-            
-            <div class="service-card">
-                <span class="icon">05</span>
+            <div class="card reveal">
+                <span class="card-num">05</span>
                 <h3>Security Solutions</h3>
                 <p>企業資産を守るための最先端セキュリティ対策。脆弱性診断から常時監視まで、鉄壁の守りを提供します。</p>
             </div>
-
-            <div class="service-card">
-                <span class="icon">06</span>
+            <div class="card reveal">
+                <span class="card-num">06</span>
                 <h3>Global DX Consulting</h3>
-                <p>海外市場への展開を見据えたデジタルトランスフォーメーション支援。技術選定から運用までトータルでサポートします。</p>
+                <p>海外市場への展開を見据えたデジタルトランスフォーメーション支援。技術選定から運用まで伴走します。</p>
             </div>
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2025 BRIDGE CO., LTD. All Rights Reserved.</p>
-    </footer>
+    <footer>&copy; 2025 BRIDGE CO., LTD. ALL RIGHTS RESERVED.</footer>
 
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) { reveals[i].classList.add("active"); }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        window.addEventListener("load", reveal);
+    </script>
 </body>
 </html>
