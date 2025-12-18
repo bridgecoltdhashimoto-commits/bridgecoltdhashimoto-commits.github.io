@@ -3,30 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bridge Co., Ltd.</title>
+    <title>BRIDGE CO., LTD. | 次世代OSとAIの融合</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Sans+JP:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Sans+JP:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
-        :root { --accent: #d4af37; --bg: #0a0a0a; }
+        :root {
+            --accent: #d4af37; /* 格式高いゴールド */
+            --bg-dark: #050505;
+            --tech-blue: #0a192f;
+            --glass: rgba(255, 255, 255, 0.03);
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg); color: #fff; font-family: 'Noto Sans JP', sans-serif; line-height: 1.6; overflow-x: hidden; }
-        header { position: fixed; width: 100%; padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .logo { font-family: 'Cinzel', serif; font-size: 1.5rem; letter-spacing: 0.1em; color: var(--accent); text-decoration: none; }
-        nav a { color: #fff; text-decoration: none; margin-left: 30px; font-size: 0.85rem; letter-spacing: 0.1em; transition: 0.3s; }
+        body {
+            background-color: var(--bg-dark);
+            color: #fff;
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- 背景：ITを象徴するデジタル・パーティクル --- */
+        #tech-canvas {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at center, #0d1b2a 0%, #050505 100%);
+        }
+
+        /* --- ヘッダー --- */
+        header {
+            position: fixed; width: 100%; padding: 25px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(0,0,0,0.8); backdrop-filter: blur(15px);
+            z-index: 1000; border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        .logo {
+            font-family: 'Cinzel', serif; font-size: 1.8rem; letter-spacing: 0.2em;
+            color: var(--accent); text-decoration: none; font-weight: 700;
+        }
+        nav { display: flex; gap: 30px; }
+        nav a {
+            color: #fff; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.15em;
+            transition: 0.4s; position: relative; font-weight: 500;
+        }
+        nav a::after {
+            content: ''; position: absolute; bottom: -5px; left: 0; width: 0;
+            height: 1px; background: var(--accent); transition: 0.4s;
+        }
+        nav a:hover::after { width: 100%; }
         nav a:hover { color: var(--accent); }
-        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 5%; }
-        .hero h1 { font-family: 'Cinzel', serif; font-size: 4rem; letter-spacing: 0.2em; margin-bottom: 20px; }
-        .hero p { font-size: 1.2rem; letter-spacing: 0.3em; color: #888; }
-        .container { padding: 100px 5%; max-width: 1200px; margin: 0 auto; text-align: center; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-top: 60px; }
-        .card { padding: 40px; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; text-decoration: none; color: inherit; }
-        .card:hover { border-color: var(--accent); background: rgba(212,175,55,0.05); }
-        .card h3 { font-family: 'Cinzel', serif; color: var(--accent); margin-bottom: 15px; }
-        footer { padding: 50px; text-align: center; color: #444; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05); }
-        @media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } header { flex-direction: column; gap: 20px; } nav a { margin: 0 10px; } }
+
+        /* --- ヒーローセクション：圧倒的インパクト --- */
+        .hero {
+            height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            padding: 0 5%; position: relative;
+        }
+        .hero-title {
+            font-family: 'Cinzel', serif; font-size: clamp(2.5rem, 8vw, 6rem);
+            letter-spacing: 0.4em; color: #fff; margin-bottom: 20px;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+            animation: fadeInOut 4s infinite alternate;
+        }
+        @keyframes fadeInOut {
+            0% { opacity: 0.8; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.02); }
+        }
+        .hero-lead {
+            font-size: 1.2rem; letter-spacing: 0.5em; color: var(--accent);
+            margin-bottom: 40px; font-weight: 300;
+        }
+
+        /* --- スクロールアニメーション用 --- */
+        .reveal { opacity: 0; transform: translateY(50px); transition: 1.5s all ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- コアテクノロジー（OS/AI） --- */
+        .section-container { padding: 120px 5%; max-width: 1200px; margin: 0 auto; text-align: center; }
+        .sec-label { font-family: 'Cinzel', serif; color: var(--accent); letter-spacing: 0.3em; display: block; margin-bottom: 10px; }
+        .sec-title { font-size: 2.5rem; margin-bottom: 60px; font-weight: 700; letter-spacing: 0.1em; }
+
+        .feature-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px; margin-top: 40px;
+        }
+        .feature-card {
+            background: var(--glass); border: 1px solid rgba(212, 175, 55, 0.15);
+            padding: 60px 40px; text-align: left; transition: 0.5s;
+            position: relative; overflow: hidden;
+        }
+        .feature-card::before {
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            transform: translateX(-100%); transition: 0.5s;
+        }
+        .feature-card:hover::before { transform: translateX(100%); }
+        .feature-card:hover {
+            background: rgba(212, 175, 55, 0.05); transform: translateY(-10px);
+            border-color: var(--accent);
+        }
+        .feature-card h3 {
+            font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--accent);
+            margin-bottom: 20px; letter-spacing: 0.1em;
+        }
+        .feature-card p { color: #ccc; font-weight: 300; line-height: 2; }
+
+        /* --- リンクボタン --- */
+        .cta-btn {
+            display: inline-block; padding: 20px 60px; border: 1px solid var(--accent);
+            color: var(--accent); text-decoration: none; font-size: 0.9rem;
+            letter-spacing: 0.3em; margin-top: 50px; transition: 0.4s;
+            font-family: 'Cinzel', serif; font-weight: 700;
+        }
+        .cta-btn:hover { background: var(--accent); color: #000; box-shadow: 0 0 30px var(--accent); }
+
+        footer {
+            padding: 80px 5%; text-align: center; border-top: 1px solid rgba(255,255,255,0.05);
+            color: #666; font-size: 0.75rem; letter-spacing: 0.2em; font-family: 'Cinzel', serif;
+        }
+
+        @media (max-width: 950px) {
+            header { flex-direction: column; gap: 20px; padding: 20px; }
+            .hero-title { font-size: 2.2rem; letter-spacing: 0.2em; }
+            .hero-lead { font-size: 0.9rem; letter-spacing: 0.2em; }
+            .feature-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
+
+    <div id="tech-canvas"></div>
+
     <header>
         <a href="index.html" class="logo">BRIDGE</a>
         <nav>
@@ -36,17 +144,54 @@
             <a href="contact.html">CONTACT</a>
         </nav>
     </header>
-    <div class="hero">
-        <h1>INNOVATION</h1>
-        <p>Bridging the Future.</p>
+
+    <div class="hero reveal">
+        <span class="hero-lead">REDEFINING THE DIGITAL FRONTIER</span>
+        <h1 class="hero-title">INNOVATION</h1>
+        <p style="color: #888; letter-spacing: 0.4em;">BRIDGE THE FUTURE WITH NEXT-GEN OS</p>
     </div>
-    <div class="container">
-        <div class="grid">
-            <a href="company.html" class="card"><h3>COMPANY</h3><p>私たちについて</p></a>
-            <a href="services.html" class="card"><h3>SERVICES</h3><p>事業内容</p></a>
-            <a href="works.html" class="card"><h3>WORKS</h3><p>実績紹介</p></a>
+
+    <div class="section-container">
+        <span class="sec-label reveal">OUR CORE COMPETENCE</span>
+        <h2 class="sec-title reveal">次世代オペレーティングシステム</h2>
+        
+        <div class="feature-grid">
+            <div class="feature-card reveal">
+                <h3>BRIDGE OS</h3>
+                <p>極限まで軽量化・最適化された次世代カーネル。あらゆるハードウェアの潜在能力を引き出し、セキュアで高速なデジタル基盤を提供します。</p>
+            </div>
+            <div class="feature-card reveal">
+                <h3>AI INTEGRETION</h3>
+                <p>GeminiやOpenAIの最新エンジンをOSレベルで統合。ユーザーの意図を汲み取り、業務効率を劇的に進化させる知能化システムを構築します。</p>
+            </div>
+            <div class="feature-card reveal">
+                <h3>CLOUD NATIVE</h3>
+                <p>スケーラブルで堅牢なクラウドインフラ設計。グローバルなビジネス展開を支える、停止することのない強靭なネットワーク環境を構築します。</p>
+            </div>
         </div>
+
+        <a href="services.html" class="cta-btn reveal">VIEW SERVICES</a>
     </div>
-    <footer>&copy; 2025 BRIDGE CO., LTD.</footer>
+
+    <footer>
+        &copy; 2025 BRIDGE CO., LTD. ALL RIGHTS RESERVED.
+    </footer>
+
+    <script>
+        /* スクロール連動： Revealアニメーション */
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        window.addEventListener("load", reveal);
+    </script>
 </body>
 </html>
